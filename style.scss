@@ -1,0 +1,567 @@
+$bg_c  : #202029;
+$main_c: #393;
+$def_c : #bbb;
+
+body {
+	background-color: $bg_c;
+	color: $def_c;
+	user-select: none;
+}
+
+.main-color {
+	color: $main_c;
+}
+
+.selectable {
+	&::selection {
+		background-color: #fff;
+		color: $bg_c;
+	}
+}
+
+$header_h : 50px;
+$sidebar_w : 150px;
+$scroll_bar : 16px;
+#container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	// border: 1px solid $main_c;
+
+	>* {
+		position: fixed;
+		background-origin: border-box;
+		// border: 1px solid #777;
+	}
+	
+	div#header { 
+		top: 0;
+		right: 0;
+		bottom: calc(100% - #{$header_h});
+		left: 0;
+		z-index: 2;
+
+		border-bottom: 1px solid #777;
+	} 
+	div#article { 
+		top: $header_h;
+		// right: $sidebar_w;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		// display: table;
+		overflow-y: scroll;
+		&.blured {
+			filter: blur(5px);
+		}
+	} 
+	div#sidebar { 
+		top: $header_h;
+		right: 16px;
+		bottom: 0;
+		left: calc(100% - #{$sidebar_w} - 16px);
+
+		// overflow-y: scroll;
+		overflow: hidden;
+		&.blured {
+			filter: blur(5px);
+		}
+	} 
+
+}
+
+div#header { 
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	>div.h-block { 
+		text-align: center;
+		>div.name-field { 
+			display: inline-block;
+			color: $main_c;
+			&:after {
+				content: " : ";
+			}
+		} 
+		>div.value-fielf { 
+			display: inline-block;
+			// color: #333;
+			>input,
+			>select {
+				background-color: $bg_c;
+				color: $def_c;
+				font-weight: bold;
+				// border: 1px solid #777;
+				border: 1px solid transparent;
+				border: 1px solid #777;
+				padding: 5px;
+				text-align: center;
+				&::selection {
+					background-color: #fff;
+					color: $bg_c;
+				}
+				option {
+					text-align: center;
+					&::selection {
+						background-color: #fff;
+						color: $bg_c;
+					}
+				}
+			}
+			label {
+
+				$bd-th : 2px;
+				$btn-c : $def_c;
+				// display: inline-block;
+				cursor: pointer; 
+				
+				>input { 
+					display: none;
+					user-select: text;
+				} 
+				
+				>div, >div>div{
+					display: inline-block;
+				}
+
+				>div.chb-cell { 
+					$size : 15px;
+					font-size: 1px;
+					width: $size;
+					height: $size;
+					margin: 5px;
+					background-color: $bg_c;
+					border: $bd-th solid $btn-c;
+					vertical-align: middle;
+					>div.chb-cell-inner { 
+						margin-top: -$size * .8;
+						// vertical-align: middle;
+						font-size: $size * 1.8;
+						color: transparent;
+						// color: #f00;
+						font-weight: bold;
+						&:before{
+							content: "\2713";
+						}
+					} 
+				} 
+
+				>input:checked+div.chb-cell>div.chb-cell-inner{
+					color: #99f;
+					color: $main_c;
+				}
+
+				>div.caption { 
+					// font-size: 14px;
+					margin-right: 10px;
+				} 
+			} 
+			div.relatve-base { 
+				position: relative;
+				height: 0;
+				>div.drop-down-list-frame { 
+					display: none;
+					position: absolute;
+					right: 0;
+					padding: 10px 0;
+					border: 1px solid $main_c;
+					background-color: $bg_c;
+					text-align: left;
+					>div.set-font-list-item { 
+						cursor: pointer;
+						padding: 0 10px;
+						padding-left: 20px;
+						&.typical {
+							padding-left: 10px;
+							font-size: 1.2em;
+							font-style: italic;
+						}
+						&:hover {
+							// color: $main_c;
+							background-color: #555;
+						}
+					} 
+				} 
+			} 
+			&:hover{
+				div.relatve-base { 
+					>div.drop-down-list-frame { 
+						display: block;
+						>div.set-font-list-item { 
+							
+						} 
+					} 
+				}
+			}
+		} 
+	} 
+
+	#favorites {
+		height: 30px;
+		width: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		cursor: pointer;
+		&:hover {
+			color: $main_c;
+			// box-shadow: 0 0 10px $def_c;
+			text-shadow: 
+				0 0 10px #f00,
+				0 0 10px #f00,
+				0 0 10px #f00,
+				0 0 10px #f00,
+				0 0 10px #f00,
+			;
+		}
+
+	}
+} 
+
+
+
+// SymbolCell
+div.symbol-cell { 
+	text-align: center;
+	display: table-cell;
+	position: relative;
+	border: 1px solid transparent;
+	margin: 0;
+	>* {
+		
+	}
+	>div.flex-wr {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-end;
+
+		// border: 1px solid #999;
+		
+		>div.symbol-wr { 
+			align-self: center;
+			font-size: 40px;
+			color: $main_c;
+			margin: 5px;
+			cursor: pointer;
+			display: inline-block;
+			border: 1px solid transparent;
+			transition: all .2s;
+			// overflow: hidden;
+			position: relative;
+			
+			* {
+				display: inline-block;
+			}
+			>div.b-line-wr { 
+				>div.b-line { 
+					position: absolute;
+					height: 0;
+					$indent : -10px;
+					left: $indent;
+					right: $indent;
+					border-bottom: 1px solid transparent;
+
+				} 
+			} 
+
+			>div.symbol {
+				position: relative;
+				white-space: pre;
+				user-select: text;
+				&::selection {
+					background-color: #fff;
+					color: $bg_c;
+				}
+			}
+		}
+		>div.entity, >div.unicode-js-str { 
+			font-size: 16px;
+			cursor: pointer;
+			color: #99f;
+			user-select: text;
+			&::selection {
+				background-color: #fff;
+				color: #000;
+			}
+			>span { 
+				color: #eee;
+				// padding-left: 5px;
+				padding-left: 3px;
+				// padding-right: 5px;
+				padding-right: 3px;
+				&::selection {
+					background-color: #fff;
+					color: #000;
+				}
+			} 
+		} 
+		>div.entity { 
+			
+			>span.num-10 { 
+				
+			} 
+		} 
+		>div.unicode-js-str { 
+			
+			>span.num-16 { 
+				
+			} 
+		} 
+		.open-btn {
+			position: absolute;
+			top: 0;
+			right: 0;
+			border: 2px solid transparent;
+			color: transparent;
+			border-radius: 10px;
+			
+			cursor: pointer;
+			// opacity: 0;
+			user-select: none;
+		}
+	}
+	&:hover {
+		position: relative;
+		z-index: 10;
+		background-color: $bg_c;
+		>div.flex-wr {
+
+			>div.symbol-wr {
+				border-color: #777;
+				box-shadow: 0 0 10px #777;
+				>div.b-line-wr {
+
+					>div.b-line {
+						border-color: #777;
+					}
+				}
+			}
+			.open-btn {
+				// opacity: 1;
+				border-color: #555;
+				// box-shadow: 0 0 10px #777;
+				color: #fff;
+				&:active {
+					color: #f00;
+					color: #000;
+					background-color: #777;
+				}
+			}
+		}
+	}
+} 
+
+// SymbolRow
+.symbol-row {
+	display: table-row;
+	display: flex;
+	justify-content: space-around;
+	margin-right: $sidebar_w + 16px;
+}
+
+//BlockNumLine
+div.block-num-line { 
+	font-family: consolas, monospace;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	color: $def_c;
+	text-align: center;
+	cursor: pointer;
+	// margin: 0 10px;
+	span.xx { 
+		// color: #777;
+		opacity: .5;
+		font-weight: bold;
+	} 
+	&.marked {
+		color: $main_c;
+		span.xx { 
+			// color: $def_c;
+		} 
+	}
+} 
+
+.symbol-modal-window.smw-glass-cower {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	display: none;
+	white-space: nowrap;
+	overflow: auto;
+	&.visible {
+		display: block;
+	}
+	&:before {
+		content: "";
+		vertical-align: middle;
+		display: inline-block;
+		height: 100%;
+		// height: 500px;
+		// border: 1px solid #f00;
+	}
+	>.smw-frame {
+		background-color: $bg_c;
+		// border: 1px solid #777;
+		box-shadow: 0 0 10px #777;
+		vertical-align: middle;
+		display: inline-block;
+		// box-shadow: 0 0 20px #555;
+		>.smw-header {
+			text-align: right;
+			text-align: center;
+			margin: 5px;
+			>.btn-div {
+				display: inline-block;
+				cursor: pointer;
+				padding: 3px;
+				// transition: all .1s;
+				&:hover{
+					box-shadow: 
+						inset 0 0 2px $def_c, 
+						0 0 2px $def_c;
+				}
+				&:active{
+					background-color: #aaa;
+				}
+				>svg {
+					vertical-align: bottom;
+				}
+			}
+			>.btn-div.smw-close-btn {
+				float: right;
+			}
+		}
+		>.smw-body {
+			>* {
+				display: inline-block;
+				white-space: nowrap;
+				vertical-align: middle;
+				margin: 30px 50px;
+			}
+			>.smw-symbol-site {
+				position: relative;
+				// overflow: hidden;
+
+
+				
+				.str-line-wr {
+					width: 0;
+					display: inline-block;
+					>.str-line {
+						position: absolute;
+						height: 0;
+						$indent : -10px;
+						left: $indent;
+						right: $indent;
+						border-bottom: 1px solid #777;
+					}
+				}
+
+				.smw-standard-character {
+					font-size: 200px;
+					display: inline-block;
+					color: #555;
+					color: transparent;
+					width: 0;
+					>.swm-top-line-wr.str-line-wr {
+						margin-top: -1px;
+						vertical-align: top;
+						>.swm-top-line.str-line {}
+					}
+					>.swm-base-line-wr.str-line-wr {
+						vertical-align: baseline;
+						>.swm-base-line.str-line {
+							left: -30px;
+							right: -30px;
+						}
+					}
+					>.swm-bottom-line-wr.str-line-wr {
+						vertical-align: bottom;
+						>.swm-bottom-line.str-line {}
+					}
+				}
+
+				>.swm-symbol-border{
+					border: 1px dashed #777;
+					display: inline-block;
+					>.smw-symbol {
+						white-space: pre;
+						font-size: 200px;
+						text-align: center;
+						color: $main_c;
+						cursor: pointer;
+						user-select: text;
+						&::selection {
+							background-color: #fff;
+							color: $bg_c;
+						}
+					}
+				}
+				
+				>.smw-symbol-controls-expander {
+					min-width: 1em;
+					font-size: 200px;
+				}
+
+			}
+			>.smw-features-site {
+				position: relative;
+				table {
+					padding: 10px;
+					// border: 1px solid $def_c;
+					>tbody {
+						>tr {
+							>td {
+								padding: 1px 10px;
+								&:nth-child(1) {
+									text-align: right;
+									color: $main_c;
+								}
+								&:nth-child(2) {
+									text-align: left;
+									cursor: pointer;
+									// font-style: italic;
+									font-family: consolas;
+									user-select: text;
+									&::selection {
+										background-color: #fff;
+										color: $bg_c;
+									}
+									>.byte {
+										padding: 3px;
+										>.data-bit {
+											color: $main_c;
+											text-decoration: underline;
+											>span {
+												text-decoration: none;
+												color: $def_c;
+											}
+										}
+										>.sp-bit {
+											
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="http://MyPlugins/content/virtualScrolling/archive/v0.0.1/virtualScrolling/virtualScrolling.js"></script>
+	<style type="text/css">
+		@font-face {
+			font-family: 'Material Icons';
+			font-style: normal;
+			font-weight: 400;
+			src: url(https://fonts.gstatic.com/s/materialicons/v53/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+		}
+	</style>
+	<style type="text/css" id="font_style_css"></style>
+	<title>Symbols</title>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div class="h-block">
+				<div class="name-field">text-decoration</div>
+				<div class="value-fielf">
+					<select class="update-fonts" id="text_decor">
+						<option value="none">none</option>
+						<option value="line-through">line-through</option>
+						<option value="overline">overline</option>
+						<option value="underline">underline</option>
+					</select>
+				</div>
+			</div>
+			<div class="h-block">
+				<div class="name-field">bold</div>
+				<div class="value-fielf">
+					<label>
+						<input type="checkbox" class="update-fonts" id="font_bold">
+						<div class="chb-cell">
+							<div class="chb-cell-inner"></div>
+						</div>
+						<!-- <div class="caption">CAPTION</div> -->
+					</label>
+				</div>
+			</div>
+			<div class="h-block">
+				<div class="name-field">italic</div>
+				<div class="value-fielf">
+					<label>
+						<input type="checkbox" class="update-fonts" id="font_italic">
+						<div class="chb-cell">
+							<div class="chb-cell-inner"></div>
+						</div>
+						<!-- <div class="caption">CAPTION</div> -->
+					</label>
+				</div>
+			</div>
+			<div class="h-block stylized" id="font_indicator" style="display: none"></div>
+			<div class="h-block">
+				<div class="name-field">font-family</div>
+				<div class="value-fielf">
+					<input type="text" class="update-fonts" id="font_fam">
+					<div class="relatve-base">
+						<div class="drop-down-list-frame" id="font_list">
+							<div class="set-font-list-item typical">Serif</div>
+							<div class="set-font-list-item">Georgia</div>
+							<div class="set-font-list-item">Times</div>
+							<div class="set-font-list-item">Times New Roman</div>
+
+							<div class="set-font-list-item typical">Sans-serif</div>
+							<div class="set-font-list-item">Arial</div>
+							<div class="set-font-list-item">Calibri</div>
+							<div class="set-font-list-item">Helvetica</div>
+							<div class="set-font-list-item">Verdana</div>
+
+							<div class="set-font-list-item typical">Material Icons</div>
+							<div class="set-font-list-item">Material Icons</div>
+
+							<div class="set-font-list-item typical">Monospace</div>
+							<div class="set-font-list-item">Consolas</div>
+							<div class="set-font-list-item">Roboto</div>
+							<div class="set-font-list-item">Courier</div>
+
+							<div class="set-font-list-item typical">Cursive</div>
+							<div class="set-font-list-item typical">Fantasy</div>
+							<div class="set-font-list-item">Impact</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="h-block" id="favorites">
+				<div class="h-menu-icon">&#10084;</div>
+			</div> -->
+			<div class="h-block">
+				<!-- <div class="name-field"></div> -->
+				<div class="value-fielf">
+					<input type="text" id="search_field" size="10">
+					<svg 
+						style="
+							enable-background:new 0 0 121 139;
+							vertical-align: bottom;
+						" 
+						version="1.1" 
+						viewBox="0 0 121 139" 
+						xml:space="preserve" 
+						xmlns="http://www.w3.org/2000/svg" 
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						width="30px" 
+						height="30px" 
+						id="search_img_gliph"
+					>
+						<path d="M75,106.6c-10.6,0-20.6-4.1-28.1-11.6S35.3,77.5,35.3,66.9c0-10.6,4.1-20.6,11.6-28.1c7.5-7.5,17.5-11.6,28.1-11.6  c10.6,0,20.6,4.1,28.1,11.6c15.5,15.5,15.5,40.7,0,56.2C95.6,102.5,85.6,106.6,75,106.6L75,106.6z M75,38.8  c-7.5,0-14.6,2.9-19.9,8.2c-11,11-11,28.8,0,39.8C60.4,92.1,67.5,95,75,95c7.5,0,14.6-2.9,19.9-8.2c5.3-5.3,8.2-12.4,8.2-19.9  c0-7.5-2.9-14.6-8.2-19.9C89.6,41.7,82.5,38.8,75,38.8L75,38.8z M7.6,123.4l29.8-29.8c1.5,2.1,3.2,4.1,5,5.9c1.8,1.8,3.8,3.5,5.9,5  l-29.8,29.8L7.6,123.4L7.6,123.4z" fill="#ccc"/>
+						<rect class="st2" height="139" id="_x3C_Slice_x3E__100_" width="121"/>
+					</svg>
+				</div>
+			</div>
+
+		</div>
+		<div id="article"></div>
+		<div id="sidebar"></div>
+
+		<div class="symbol-modal-window smw-glass-cower">
+			<div class="smw-frame">
+				<div class="smw-header">
+					<div class="smw-previous-symbol-btn btn-div" title="Previous">
+						<svg 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve"
+							style="enable-background:new 0 0 306 306;" 
+							viewBox="0 0 306 306" 
+							x="0px" 
+							y="0px"
+							width="22px" 
+							height="22px" 
+						>
+							<g>
+								<g id="chevron-left">
+									<polygon points="247.35,35.7 211.65,0 58.65,153 211.65,306 247.35,270.3 130.05,153 		" fill="#ccc"/>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="smw-copy-symbol-btn btn-div" title="Copy Symbol">
+						<svg 
+							class="" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							viewBox="0 0 748 748" 
+							style="enable-background: new 0 0 748 748; " 
+							x="0px" 
+							y="0px"
+							width="22px" 
+							height="22px" 
+						>
+							<g>
+								<g>
+									<polygon points="680,646 680,0 170,0 170,68 612,68 612,646" fill="#ccc"/>
+									<path d="M68,109.14v631.72c0,3.943,3.128,7.14,7.004,7.14h495.958c3.91,0,7.038-3.162,7.038-7.14V109.14
+										c0-3.944-3.128-7.14-7.004-7.14H75.004C71.128,102,68,105.162,68,109.14z M136,204h374v34H136V204z M136,306h374v34H136V306z
+										 M136,408h374v34H136V408z M136,510h374v34H136V510z M136,612h238v34H136V612z" fill="#ccc"/>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="smw-googling-symbol-btn btn-div" title="Googling symbol">
+						<svg 
+							enable-background="new 0 0 32 32" 
+							version="1.1" 
+							viewBox="0 0 32 32" 
+							xml:space="preserve" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							width="22px" 
+							height="22px"
+						>
+							<g id="Flat_copy">
+								<path d="M31.37,13c0.2,1.07,0.31,2.19,0.31,3.36C31.68,25.5,25.56,32,16.32,32c-8.84,0-16-7.16-16-16s7.16-16,16-16   c4.32,0,7.93,1.59,10.7,4.17L22.51,8.68V8.67c-1.68-1.6-3.81-2.42-6.189-2.42c-5.28,0-9.57,4.46-9.57,9.74   c0,5.279,4.29,9.75,9.57,9.75c4.79,0,8.05-2.74,8.721-6.5H16.32V13L31.37,13L31.37,13z" fill="#ccc"/>
+							</g>
+						</svg>
+					</div>
+					<div class="smw-next-symbol-btn btn-div" title="Next">
+						<svg 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve"
+							viewBox="0 0 306 306" 
+							style="enable-background:new 0 0 306 306;" 
+							x="0px" 
+							y="0px"
+							width="22px" 
+							height="22px" 
+						>
+							<g>
+								<g id="keyboard-arrow-right">
+									<polygon points="58.65,267.75 175.95,153 58.65,35.7 94.35,0 247.35,153 94.35,306 		" fill="#ccc"/>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="smw-close-btn btn-div" title="Close">
+						<svg 
+							class="" 
+							version="1.1" 
+							xmlns="http://www.w3.org/2000/svg" 
+							xmlns:xlink="http://www.w3.org/1999/xlink" 
+							xml:space="preserve" 
+							viewBox="0 0 512 512" 
+							style="enable-background:new 0 0 512 512;" 
+							width="22px" 
+							height="22px" 
+						>
+							<style type="text/css">
+							<![CDATA[
+							.st0{display:inline;}
+							.st1{fill:none;stroke:#ccc;stroke-width:16;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+							.st2{display:none;}
+							]]>
+							</style>
+							<g class="st2" id="cross">
+								<g class="st0">
+									<line class="st1" x1="112.5" x2="401" y1="112.5" y2="401"/>
+									<line class="st1" x1="401" x2="112.5" y1="112.5" y2="401"/>
+								</g>
+							</g>
+							<g id="cross_copy">
+								<path d="M268.064,256.75l138.593-138.593c3.124-3.124,3.124-8.189,0-11.313c-3.125-3.124-8.189-3.124-11.314,0L256.75,245.436   L118.157,106.843c-3.124-3.124-8.189-3.124-11.313,0c-3.125,3.124-3.125,8.189,0,11.313L245.436,256.75L106.843,395.343   c-3.125,3.125-3.125,8.189,0,11.314c1.562,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343L256.75,268.064l138.593,138.593   c1.563,1.562,3.609,2.343,5.657,2.343s4.095-0.781,5.657-2.343c3.124-3.125,3.124-8.189,0-11.314L268.064,256.75z" fill="#ccc"/>
+							</g>
+						</svg>
+					</div>
+					
+					<!-- <div class="smw-copy-symbol-btn btn-div">&nbsp;copy&nbsp;</div> -->
+					<!-- <div class="smw-close-btn btn-div">&nbsp;&nbsp;✖&nbsp;&nbsp;</div> -->
+				</div>
+				<div class="smw-body">
+					<div class="smw-symbol-site">
+						<div class="smw-standard-character stylized">A
+							<div class="swm-top-line-wr str-line-wr">
+								<div class="swm-top-line str-line"></div>
+							</div>
+							<div class="swm-base-line-wr str-line-wr">
+								<div class="swm-base-line str-line"></div>
+							</div>
+							<div class="swm-bottom-line-wr str-line-wr">
+								<div class="swm-bottom-line str-line"></div>
+							</div>
+						</div>
+						<div class="swm-symbol-border"><div class="smw-symbol selectable stylized"></div></div>
+						<div class="smw-symbol-controls-expander"></div>
+					</div>
+					<div class="smw-features-site">
+						<!-- table -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+

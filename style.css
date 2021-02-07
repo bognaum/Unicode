@@ -1,0 +1,442 @@
+@charset "UTF-8";
+body {
+  background-color: #202029;
+  color: #bbb;
+  user-select: none;
+}
+
+.main-color {
+  color: #393;
+}
+
+.selectable::selection {
+  background-color: #fff;
+  color: #202029;
+}
+
+#container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+#container > * {
+  position: fixed;
+  background-origin: border-box;
+}
+#container div#header {
+  top: 0;
+  right: 0;
+  bottom: calc(100% - 50px);
+  left: 0;
+  z-index: 2;
+  border-bottom: 1px solid #777;
+}
+#container div#article {
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+#container div#article.blured {
+  filter: blur(5px);
+}
+#container div#sidebar {
+  top: 50px;
+  right: 16px;
+  bottom: 0;
+  left: calc(100% - 150px - 16px);
+  overflow: hidden;
+}
+#container div#sidebar.blured {
+  filter: blur(5px);
+}
+
+div#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+div#header > div.h-block {
+  text-align: center;
+}
+div#header > div.h-block > div.name-field {
+  display: inline-block;
+  color: #393;
+}
+div#header > div.h-block > div.name-field:after {
+  content: " : ";
+}
+div#header > div.h-block > div.value-fielf {
+  display: inline-block;
+}
+div#header > div.h-block > div.value-fielf > input,
+div#header > div.h-block > div.value-fielf > select {
+  background-color: #202029;
+  color: #bbb;
+  font-weight: bold;
+  border: 1px solid transparent;
+  border: 1px solid #777;
+  padding: 5px;
+  text-align: center;
+}
+div#header > div.h-block > div.value-fielf > input::selection,
+div#header > div.h-block > div.value-fielf > select::selection {
+  background-color: #fff;
+  color: #202029;
+}
+div#header > div.h-block > div.value-fielf > input option,
+div#header > div.h-block > div.value-fielf > select option {
+  text-align: center;
+}
+div#header > div.h-block > div.value-fielf > input option::selection,
+div#header > div.h-block > div.value-fielf > select option::selection {
+  background-color: #fff;
+  color: #202029;
+}
+div#header > div.h-block > div.value-fielf label {
+  cursor: pointer;
+}
+div#header > div.h-block > div.value-fielf label > input {
+  display: none;
+  user-select: text;
+}
+div#header > div.h-block > div.value-fielf label > div, div#header > div.h-block > div.value-fielf label > div > div {
+  display: inline-block;
+}
+div#header > div.h-block > div.value-fielf label > div.chb-cell {
+  font-size: 1px;
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  background-color: #202029;
+  border: 2px solid #bbb;
+  vertical-align: middle;
+}
+div#header > div.h-block > div.value-fielf label > div.chb-cell > div.chb-cell-inner {
+  margin-top: -12px;
+  font-size: 27px;
+  color: transparent;
+  font-weight: bold;
+}
+div#header > div.h-block > div.value-fielf label > div.chb-cell > div.chb-cell-inner:before {
+  content: "✓";
+}
+div#header > div.h-block > div.value-fielf label > input:checked + div.chb-cell > div.chb-cell-inner {
+  color: #99f;
+  color: #393;
+}
+div#header > div.h-block > div.value-fielf label > div.caption {
+  margin-right: 10px;
+}
+div#header > div.h-block > div.value-fielf div.relatve-base {
+  position: relative;
+  height: 0;
+}
+div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame {
+  display: none;
+  position: absolute;
+  right: 0;
+  padding: 10px 0;
+  border: 1px solid #393;
+  background-color: #202029;
+  text-align: left;
+}
+div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item {
+  cursor: pointer;
+  padding: 0 10px;
+  padding-left: 20px;
+}
+div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item.typical {
+  padding-left: 10px;
+  font-size: 1.2em;
+  font-style: italic;
+}
+div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item:hover {
+  background-color: #555;
+}
+div#header > div.h-block > div.value-fielf:hover div.relatve-base > div.drop-down-list-frame {
+  display: block;
+}
+div#header #favorites {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+div#header #favorites:hover {
+  color: #393;
+  text-shadow: 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00;
+}
+
+div.symbol-cell {
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  border: 1px solid transparent;
+  margin: 0;
+}
+div.symbol-cell > div.flex-wr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+div.symbol-cell > div.flex-wr > div.symbol-wr {
+  align-self: center;
+  font-size: 40px;
+  color: #393;
+  margin: 5px;
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  position: relative;
+}
+div.symbol-cell > div.flex-wr > div.symbol-wr * {
+  display: inline-block;
+}
+div.symbol-cell > div.flex-wr > div.symbol-wr > div.b-line-wr > div.b-line {
+  position: absolute;
+  height: 0;
+  left: -10px;
+  right: -10px;
+  border-bottom: 1px solid transparent;
+}
+div.symbol-cell > div.flex-wr > div.symbol-wr > div.symbol {
+  position: relative;
+  white-space: pre;
+  user-select: text;
+}
+div.symbol-cell > div.flex-wr > div.symbol-wr > div.symbol::selection {
+  background-color: #fff;
+  color: #202029;
+}
+div.symbol-cell > div.flex-wr > div.entity, div.symbol-cell > div.flex-wr > div.unicode-js-str {
+  font-size: 16px;
+  cursor: pointer;
+  color: #99f;
+  user-select: text;
+}
+div.symbol-cell > div.flex-wr > div.entity::selection, div.symbol-cell > div.flex-wr > div.unicode-js-str::selection {
+  background-color: #fff;
+  color: #000;
+}
+div.symbol-cell > div.flex-wr > div.entity > span, div.symbol-cell > div.flex-wr > div.unicode-js-str > span {
+  color: #eee;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+div.symbol-cell > div.flex-wr > div.entity > span::selection, div.symbol-cell > div.flex-wr > div.unicode-js-str > span::selection {
+  background-color: #fff;
+  color: #000;
+}
+div.symbol-cell > div.flex-wr .open-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 2px solid transparent;
+  color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+div.symbol-cell:hover {
+  position: relative;
+  z-index: 10;
+  background-color: #202029;
+}
+div.symbol-cell:hover > div.flex-wr > div.symbol-wr {
+  border-color: #777;
+  box-shadow: 0 0 10px #777;
+}
+div.symbol-cell:hover > div.flex-wr > div.symbol-wr > div.b-line-wr > div.b-line {
+  border-color: #777;
+}
+div.symbol-cell:hover > div.flex-wr .open-btn {
+  border-color: #555;
+  color: #fff;
+}
+div.symbol-cell:hover > div.flex-wr .open-btn:active {
+  color: #f00;
+  color: #000;
+  background-color: #777;
+}
+
+.symbol-row {
+  display: table-row;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 166px;
+}
+
+div.block-num-line {
+  font-family: consolas, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #bbb;
+  text-align: center;
+  cursor: pointer;
+}
+div.block-num-line span.xx {
+  opacity: 0.5;
+  font-weight: bold;
+}
+div.block-num-line.marked {
+  color: #393;
+}
+.symbol-modal-window.smw-glass-cower {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  display: none;
+  white-space: nowrap;
+  overflow: auto;
+}
+.symbol-modal-window.smw-glass-cower.visible {
+  display: block;
+}
+.symbol-modal-window.smw-glass-cower:before {
+  content: "";
+  vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame {
+  background-color: #202029;
+  box-shadow: 0 0 10px #777;
+  vertical-align: middle;
+  display: inline-block;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header {
+  text-align: right;
+  text-align: center;
+  margin: 5px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div {
+  display: inline-block;
+  cursor: pointer;
+  padding: 3px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div:hover {
+  box-shadow: inset 0 0 2px #bbb, 0 0 2px #bbb;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div:active {
+  background-color: #aaa;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div > svg {
+  vertical-align: bottom;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div.smw-close-btn {
+  float: right;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > * {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: 30px 50px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site {
+  position: relative;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .str-line-wr {
+  width: 0;
+  display: inline-block;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .str-line-wr > .str-line {
+  position: absolute;
+  height: 0;
+  left: -10px;
+  right: -10px;
+  border-bottom: 1px solid #777;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character {
+  font-size: 200px;
+  display: inline-block;
+  color: #555;
+  color: transparent;
+  width: 0;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-top-line-wr.str-line-wr {
+  margin-top: -1px;
+  vertical-align: top;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-base-line-wr.str-line-wr {
+  vertical-align: baseline;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-base-line-wr.str-line-wr > .swm-base-line.str-line {
+  left: -30px;
+  right: -30px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-bottom-line-wr.str-line-wr {
+  vertical-align: bottom;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border {
+  border: 1px dashed #777;
+  display: inline-block;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border > .smw-symbol {
+  white-space: pre;
+  font-size: 200px;
+  text-align: center;
+  color: #393;
+  cursor: pointer;
+  user-select: text;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border > .smw-symbol::selection {
+  background-color: #fff;
+  color: #202029;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .smw-symbol-controls-expander {
+  min-width: 1em;
+  font-size: 200px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site {
+  position: relative;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table {
+  padding: 10px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td {
+  padding: 1px 10px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(1) {
+  text-align: right;
+  color: #393;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) {
+  text-align: left;
+  cursor: pointer;
+  font-family: consolas;
+  user-select: text;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2)::selection {
+  background-color: #fff;
+  color: #202029;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte {
+  padding: 3px;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit {
+  color: #393;
+  text-decoration: underline;
+}
+.symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit > span {
+  text-decoration: none;
+  color: #bbb;
+}
+
+/*# sourceMappingURL=style.css.map */
