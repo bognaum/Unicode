@@ -1,3 +1,3 @@
 [submodule "virtual-scrolling"]
 	path = virtual-scrolling
-	url = git@github.com:bognaum/virtual-scrolling.git
+	url = https://github.com/bognaum/virtual-scrolling.git
