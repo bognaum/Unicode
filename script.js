@@ -1,3 +1,5 @@
+import virtualScrolling from "./virtual-scrolling/virtual-scrolling.js";
+
 var _ = {
 	cellW: 60,
 	cellH: 60,
