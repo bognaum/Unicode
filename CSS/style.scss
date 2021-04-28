@@ -1,0 +1,79 @@
+$bg_c  : #202029;
+$main_c: #393;
+$def_c : #bbb;
+
+body {
+	background-color: $bg_c;
+	color: $def_c;
+	user-select: none;
+}
+
+.main-color {
+	color: $main_c;
+}
+
+.selectable {
+	&::selection {
+		background-color: #fff;
+		color: $bg_c;
+	}
+}
+
+$header_h : 50px;
+$sidebar_w : 150px;
+$scroll_bar : 16px;
+#container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	// border: 1px solid $main_c;
+
+	>* {
+		position: fixed;
+		background-origin: border-box;
+		// border: 1px solid #777;
+	}
+	
+	div#header { 
+		top: 0;
+		right: 0;
+		bottom: calc(100% - #{$header_h});
+		left: 0;
+		z-index: 2;
+
+		border-bottom: 1px solid #777;
+	} 
+	div#article { 
+		top: $header_h;
+		// right: $sidebar_w;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		// display: table;
+		overflow-y: scroll;
+		&.blured {
+			filter: blur(5px);
+		}
+	} 
+	div#sidebar { 
+		top: $header_h;
+		right: 16px;
+		bottom: 0;
+		left: calc(100% - #{$sidebar_w} - 16px);
+
+		// overflow-y: scroll;
+		overflow: hidden;
+		&.blured {
+			filter: blur(5px);
+		}
+	} 
+
+}
+
+@import "header";
+@import "auto-generated";
+@import "symbol-modal-window";
