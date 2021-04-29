@@ -1,0 +1,95 @@
+import _                 from "./settings.js";
+import {
+	eHTML,
+	generateUTF16Char,
+} from "./util.js";
+
+export {
+	getSymbolRowEl,
+	getSymbolBlokEl,
+	getBlockNumLineEl,
+	getSymbolCellStr,
+	getSymbolRowStr,
+	getBlockNumLineStr,
+};
+
+function getSymbolRowEl(lineNum) {
+	return eHTML(getSymbolRowStr(lineNum));
+}
+
+function getSymbolBlokEl(blockNum) {
+	var block = eHTML(`
+		<div class="symbol-block">
+			<div class="block-header"></div>
+			<div class="block-body"></div>
+			<div class="block-advertising-slot"></div>
+		</div>
+	`);
+}
+
+function getBlockNumLineEl(lineNum) {
+	return eHTML(getBlockNumLineStr(lineNum));
+}
+
+
+function getSymbolCellStr(num) {
+	var
+		symbol = generateUTF16Char(num),
+		str16 = num.toString(16).toUpperCase().padStart(4, "0");
+
+	return `
+		<div 
+			class="symbol-cell"
+			data-char-num="${num}" 
+			style="
+				width: ${_.cellW}px; 
+				height: ${_.cellH}px; 
+				box-sizing: border-box;
+				margin: 0;
+			"
+			/*title="${num+" 0x"+str16}"*/
+			title="${"0x"+num.toString(16).toUpperCase()+"\n  "+num}"
+		>
+			<div class="flex-wr open-smw">
+				<div class="symbol-wr open-smw">
+					<div class="b-line-wr"><div class="b-line"></div></div><div class="symbol selectable stylized open-smw">${symbol}</div>
+				</div>
+			</div>
+		</div>
+	`;
+}
+
+function getSymbolRowStr(lineNum) {
+	var
+		start = lineNum * _.rowLength,
+		end = start + _.rowLength,
+		str = "";
+
+	for (var i = start; i < end; i++) {
+		str += getSymbolCellStr(i);
+	}
+
+	return `
+		<div class="symbol-row">${str}</div>
+	`;
+}
+
+function getBlockNumLineStr(lineNum) {
+	const 
+		str = lineNum.toString(16).toUpperCase().padStart(4, "0"),
+		planeStr = str.slice(0,2),
+		blockStr = str.slice(2, 4);
+
+	return `
+		<div 
+			class="block-num-line"
+			style="
+				height: ${_.blockNumLineHeight}px;
+			"
+			data-block-num="${lineNum}" 
+		><span class="plane-num" title="plane">${planeStr}</span> &nbsp;
+			<span class="block-num" title="block">${blockStr}<span class="xx">XX</span></span></div>
+	`;
+}
+
+// Rendering functions ⭡

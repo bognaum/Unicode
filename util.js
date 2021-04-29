@@ -1,4 +1,4 @@
-export default {
+export {
 	eHTML,
 	getParentLine,
 	selectElement,

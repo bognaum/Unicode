@@ -1,11 +1,9 @@
-import util              from "./util.js";
-
-const {
+import {
 	generateUTF16Char,
 	getUTF8Code,
 	getUTF16Code,
 	getUTF32Code,
-} = util;
+} from "./util.js";
 
 
 export default {

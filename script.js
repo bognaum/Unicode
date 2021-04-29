@@ -1,36 +1,25 @@
 import virtualScrolling from "./virtual-scrolling/virtual-scrolling.js";
 import symbolModalWindow from "./symbol-modal-window.js";
-import util              from "./util.js";
+// import util              from "./util.js";
+// import rendering         from "./rendering.js";
+import _                 from "./settings.js";
 
-const {
+import {
 	eHTML,
 	getParentLine,
 	selectElement,
 	clearSelection,
 	generateUTF16Char,
-} = util;
+} from "./util.js";
 
-const _ = {
-	cellW: 60,
-	cellH: 60,
-
-	blockNumLineHeight: 30,
-
-	start : 0,
-	end : 0x10FFFF,
-	blockLength : 256,
-	rowLength : 16,
-
-	sidebar : document.querySelector("#sidebar"),
-	article : document.querySelector("#article"),
-
-	fontStyle : {
-		textDecoration : "none",
-		fontWeight : "normal",
-		fontStyle : "normal",
-		fontFamily : getComputedStyle(document.body).fontFamily,
-	}
-};
+import {
+	getSymbolRowEl,
+	getSymbolBlokEl,
+	getBlockNumLineEl,
+	getSymbolCellStr,
+	getSymbolRowStr,
+	getBlockNumLineStr,
+} from "./rendering.js";
 
 _.countOfAllLines = Math.ceil((_.end - _.start) / _.rowLength);
 _.countOfAllBlocks = Math.ceil((_.end - _.start) / _.blockLength);
@@ -250,87 +239,4 @@ function updateFontCss() {
 // Events ⭡
 
 
-
-// Rendering functions ⭣
-
-function getSymbolRowEl(lineNum) {
-	return eHTML(getSymbolRowStr(lineNum));
-}
-
-function getSymbolBlokEl(blockNum) {
-	var block = eHTML(`
-		<div class="symbol-block">
-			<div class="block-header"></div>
-			<div class="block-body"></div>
-			<div class="block-advertising-slot"></div>
-		</div>
-	`);
-}
-
-function getBlockNumLineEl(lineNum) {
-	return eHTML(getBlockNumLineStr(lineNum));
-}
-
-
-function getSymbolCellStr(num) {
-	var
-		symbol = generateUTF16Char(num),
-		str16 = num.toString(16).toUpperCase().padStart(4, "0");
-
-	return `
-		<div 
-			class="symbol-cell"
-			data-char-num="${num}" 
-			style="
-				width: ${_.cellW}px; 
-				height: ${_.cellH}px; 
-				box-sizing: border-box;
-				margin: 0;
-			"
-			/*title="${num+" 0x"+str16}"*/
-			title="${"0x"+num.toString(16).toUpperCase()+"\n  "+num}"
-		>
-			<div class="flex-wr open-smw">
-				<div class="symbol-wr open-smw">
-					<div class="b-line-wr"><div class="b-line"></div></div><div class="symbol selectable stylized open-smw">${symbol}</div>
-				</div>
-			</div>
-		</div>
-	`;
-}
-
-function getSymbolRowStr(lineNum) {
-	var
-		start = lineNum * _.rowLength,
-		end = start + _.rowLength,
-		str = "";
-
-	for (var i = start; i < end; i++) {
-		str += getSymbolCellStr(i);
-	}
-
-	return `
-		<div class="symbol-row">${str}</div>
-	`;
-}
-
-function getBlockNumLineStr(lineNum) {
-	const 
-		str = lineNum.toString(16).toUpperCase().padStart(4, "0"),
-		planeStr = str.slice(0,2),
-		blockStr = str.slice(2, 4);
-
-	return `
-		<div 
-			class="block-num-line"
-			style="
-				height: ${_.blockNumLineHeight}px;
-			"
-			data-block-num="${lineNum}" 
-		><span class="plane-num" title="plane">${planeStr}</span> &nbsp;
-			<span class="block-num" title="block">${blockStr}<span class="xx">XX</span></span></div>
-	`;
-}
-
-// Rendering functions ⭡
 
