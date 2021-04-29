@@ -1,6 +1,6 @@
 import virtualScrolling from "./virtual-scrolling/virtual-scrolling.js";
 
-var _ = {
+const _ = {
 	cellW: 60,
 	cellH: 60,
 
@@ -20,21 +20,35 @@ var _ = {
 		fontStyle : "normal",
 		fontFamily : getComputedStyle(document.body).fontFamily,
 	}
-}
-
-var cHtmlShell = document.createElement("div");
-
-font_fam.value = getComputedStyle(document.body).fontFamily;
-font_indicator.textContent = getComputedStyle(font_indicator).fontFamily;
+};
 
 _.countOfAllLines = Math.ceil((_.end - _.start) / _.rowLength);
 _.countOfAllBlocks = Math.ceil((_.end - _.start) / _.blockLength);
 
-var articleVS = virtualScrolling(_.article, getSymbolRowEl, _.countOfAllLines, _.cellH);
-var sidebarVS = virtualScrolling(_.sidebar, getBlockNumLineEl, _.countOfAllBlocks, _.blockNumLineHeight);
+
+const cHtmlShell = document.createElement("div");
+
+font_fam.value = getComputedStyle(document.body).fontFamily;
+font_indicator.textContent = getComputedStyle(font_indicator).fontFamily;
 
 
-articleVS.onAfterRender = function(e){
+const 
+	articleAPI = virtualScrolling(
+		_.article, 
+		getSymbolRowEl, 
+		_.countOfAllLines, 
+		_.cellH
+	),
+	sidebarAPI = virtualScrolling(
+		_.sidebar, 
+		getBlockNumLineEl, 
+		_.countOfAllBlocks, 
+		_.blockNumLineHeight
+	);
+
+
+
+articleAPI.onAfterRender = function(e){
 	setTimeout(function() {
 		afterArticleRender();
 		afterArticleScroll();
@@ -42,7 +56,7 @@ articleVS.onAfterRender = function(e){
 
 }
 
-sidebarVS.onAfterRender = function(e) {
+sidebarAPI.onAfterRender = function(e) {
 	afterArticleScroll();
 }
 
@@ -53,10 +67,10 @@ afterArticleScroll();
 
 document.body.onclick = function h_BodyClick(e) {
 
-	var t = e.target;
+	let t = e.target;
 	do {
 		if (t.classList.contains("block-num-line")) {
-			articleVS.setOnTop(t.dataset.blockNum * _.blockLength / _.rowLength);
+			articleAPI.setOnTop(t.dataset.blockNum * _.blockLength / _.rowLength);
 		} else 
 		if (t.classList.contains("smw-close-btn")) {
 			closeSymbolModalWindow();
@@ -82,7 +96,7 @@ document.body.onclick = function h_BodyClick(e) {
 				prev   = (0 < num)? num - 1 : num,
 				rowNum = prev     ? Math.floor(prev / _.rowLength) : 0;
 			openSymbolModalWindow(prev);
-			articleVS.setOnMiddle(rowNum);
+			articleAPI.setOnMiddle(rowNum);
 		} else
 		if (t.classList.contains("smw-next-symbol-btn")) {
 			var 
@@ -91,7 +105,7 @@ document.body.onclick = function h_BodyClick(e) {
 				next   = num + 1,
 				rowNum = Math.floor(next / _.rowLength);
 			openSymbolModalWindow(next);
-			articleVS.setOnMiddle(rowNum);
+			articleAPI.setOnMiddle(rowNum);
 		} else 
 		if (t.id == "search_img_gliph") {
 			var input = document.querySelector("#search_field");
@@ -172,7 +186,7 @@ document.body.onchange = function h_BodyChange(e) {
 
 		let rowNum = Math.floor(num / _.rowLength);
 		openSymbolModalWindow(num);
-		articleVS.setOnMiddle(rowNum);
+		articleAPI.setOnMiddle(rowNum);
 
 		t.select();
 	}
@@ -184,19 +198,20 @@ document.querySelector("#sidebar").onwheel = function h_kNumWheel(e) {
 }
 
 function afterArticleRender(){
-	sidebarVS.setOnMiddle(
-		Math.floor(articleVS.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
+	sidebarAPI.setOnMiddle(
+		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
 	);
 	
 }
 
 function afterArticleScroll() {
-	var 
-		firstBlockNum = Math.floor(articleVS.getFirstFullyVisibleLineNum() * _.rowLength / _.blockLength),
-		lastBlockNum = Math.floor(articleVS.getLastFullyVisibleLineNum() * _.rowLength / _.blockLength),
-		lines = _.sidebar.children[0].children;
+	const 
+		firstBlockNum = Math.floor(articleAPI.getFirstFullyVisibleLineNum() * _.rowLength / _.blockLength),
+		lastBlockNum = Math.floor(articleAPI.getLastFullyVisibleLineNum() * _.rowLength / _.blockLength),
+		lines = _.sidebar.children[0].children,
+		len   = lines.length;
 
-	for (var i = 0; i < lines.length; i++) {
+	for (let i = 0; i < len; i++) {
 		var line = lines[i];
 		if (line.dataset.blockNum == firstBlockNum) {
 			line.classList.add("marked");
