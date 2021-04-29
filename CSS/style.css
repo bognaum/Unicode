@@ -1,14 +1,14 @@
 body {
-  background-color: #202029;
+  background-color: #222;
   color: #bbb;
   user-select: none; }
 
 .main-color {
-  color: #393; }
+  color: #0a8; }
 
 .selectable::selection {
   background-color: #fff;
-  color: #202029; }
+  color: #222; }
 
 #container {
   position: fixed;
@@ -51,14 +51,14 @@ div#header {
     text-align: center; }
     div#header > div.h-block > div.name-field {
       display: inline-block;
-      color: #393; }
+      color: #0a8; }
       div#header > div.h-block > div.name-field:after {
         content: " : "; }
     div#header > div.h-block > div.value-fielf {
       display: inline-block; }
       div#header > div.h-block > div.value-fielf > input,
       div#header > div.h-block > div.value-fielf > select {
-        background-color: #202029;
+        background-color: #222;
         color: #bbb;
         font-weight: bold;
         border: 1px solid transparent;
@@ -68,14 +68,14 @@ div#header {
         div#header > div.h-block > div.value-fielf > input::selection,
         div#header > div.h-block > div.value-fielf > select::selection {
           background-color: #fff;
-          color: #202029; }
+          color: #222; }
         div#header > div.h-block > div.value-fielf > input option,
         div#header > div.h-block > div.value-fielf > select option {
           text-align: center; }
           div#header > div.h-block > div.value-fielf > input option::selection,
           div#header > div.h-block > div.value-fielf > select option::selection {
             background-color: #fff;
-            color: #202029; }
+            color: #222; }
       div#header > div.h-block > div.value-fielf label {
         cursor: pointer; }
         div#header > div.h-block > div.value-fielf label > input {
@@ -88,7 +88,7 @@ div#header {
           width: 15px;
           height: 15px;
           margin: 5px;
-          background-color: #202029;
+          background-color: #222;
           border: 2px solid #bbb;
           vertical-align: middle; }
           div#header > div.h-block > div.value-fielf label > div.chb-cell > div.chb-cell-inner {
@@ -100,7 +100,7 @@ div#header {
               content: "\2713"; }
         div#header > div.h-block > div.value-fielf label > input:checked + div.chb-cell > div.chb-cell-inner {
           color: #99f;
-          color: #393; }
+          color: #0a8; }
         div#header > div.h-block > div.value-fielf label > div.caption {
           margin-right: 10px; }
       div#header > div.h-block > div.value-fielf div.relatve-base {
@@ -111,8 +111,8 @@ div#header {
           position: absolute;
           right: 0;
           padding: 10px 0;
-          border: 1px solid #393;
-          background-color: #202029;
+          border: 1px solid #0a8;
+          background-color: #222;
           text-align: left; }
           div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item {
             cursor: pointer;
@@ -134,7 +134,7 @@ div#header {
     justify-content: space-around;
     cursor: pointer; }
     div#header #favorites:hover {
-      color: #393;
+      color: #0a8;
       text-shadow: 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00; }
 
 div.symbol-cell {
@@ -155,7 +155,7 @@ div.symbol-cell {
     div.symbol-cell > div.flex-wr > div.symbol-wr {
       align-self: center;
       font-size: 40px;
-      color: #393;
+      color: #0a8;
       margin: 5px;
       cursor: pointer;
       display: inline-block;
@@ -176,7 +176,7 @@ div.symbol-cell {
         user-select: text; }
         div.symbol-cell > div.flex-wr > div.symbol-wr > div.symbol::selection {
           background-color: #fff;
-          color: #202029; }
+          color: #222; }
     div.symbol-cell > div.flex-wr > div.entity, div.symbol-cell > div.flex-wr > div.unicode-js-str {
       font-size: 16px;
       cursor: pointer;
@@ -204,7 +204,7 @@ div.symbol-cell {
   div.symbol-cell:hover {
     position: relative;
     z-index: 10;
-    background-color: #202029; }
+    background-color: #222; }
     div.symbol-cell:hover > div.flex-wr > div.symbol-wr {
       border-color: #777;
       box-shadow: 0 0 10px #777; }
@@ -237,7 +237,7 @@ div.block-num-line {
     opacity: .5;
     font-weight: bold; }
   div.block-num-line.marked {
-    color: #393; }
+    color: #0a8; }
 
 .symbol-modal-window.smw-glass-cower {
   position: fixed;
@@ -257,7 +257,7 @@ div.block-num-line {
     display: inline-block;
     height: 100%; }
   .symbol-modal-window.smw-glass-cower > .smw-frame {
-    background-color: #202029;
+    background-color: #222;
     box-shadow: 0 0 10px #777;
     vertical-align: middle;
     display: inline-block; }
@@ -316,12 +316,12 @@ div.block-num-line {
           white-space: pre;
           font-size: 200px;
           text-align: center;
-          color: #393;
+          color: #0a8;
           cursor: pointer;
           user-select: text; }
           .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border > .smw-symbol::selection {
             background-color: #fff;
-            color: #202029; }
+            color: #222; }
       .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .smw-symbol-controls-expander {
         min-width: 1em;
         font-size: 200px; }
@@ -333,7 +333,7 @@ div.block-num-line {
           padding: 1px 10px; }
           .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(1) {
             text-align: right;
-            color: #393; }
+            color: #0a8; }
           .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) {
             text-align: left;
             cursor: pointer;
@@ -341,11 +341,11 @@ div.block-num-line {
             user-select: text; }
             .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2)::selection {
               background-color: #fff;
-              color: #202029; }
+              color: #222; }
             .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte {
               padding: 3px; }
               .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit {
-                color: #393;
+                color: #0a8;
                 text-decoration: underline; }
                 .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit > span {
                   text-decoration: none;
