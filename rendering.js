@@ -1,3 +1,4 @@
+import virtualScrolling  from "./virtual-scrolling/virtual-scrolling.js";
 import _                 from "./settings.js";
 import {
 	eHTML,
@@ -5,13 +6,71 @@ import {
 } from "./util.js";
 
 export {
-	getSymbolRowEl,
-	getSymbolBlokEl,
-	getBlockNumLineEl,
-	getSymbolCellStr,
-	getSymbolRowStr,
-	getBlockNumLineStr,
+	articleAPI,
+	sidebarAPI,
 };
+_.countOfAllLines = Math.ceil((_.end - _.start) / _.rowLength);
+_.countOfAllBlocks = Math.ceil((_.end - _.start) / _.blockLength);
+
+const 
+	articleAPI = virtualScrolling(
+		_.article, 
+		getSymbolRowEl, 
+		_.countOfAllLines, 
+		_.cellH
+	),
+	sidebarAPI = virtualScrolling(
+		_.sidebar, 
+		getBlockNumLineEl, 
+		_.countOfAllBlocks, 
+		_.blockNumLineHeight
+	);
+
+
+
+articleAPI.onAfterRender = function(e){
+	setTimeout(function() {
+		afterArticleRender();
+		afterArticleScroll();
+	})
+
+}
+
+sidebarAPI.onAfterRender = function(e) {
+	afterArticleScroll();
+}
+
+afterArticleRender();
+afterArticleScroll();
+
+
+function afterArticleRender(){
+	sidebarAPI.setOnMiddle(
+		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
+	);
+	
+}
+
+function afterArticleScroll() {
+	const 
+		firstBlockNum = Math.floor(articleAPI.getFirstFullyVisibleLineNum() * _.rowLength / _.blockLength),
+		lastBlockNum = Math.floor(articleAPI.getLastFullyVisibleLineNum() * _.rowLength / _.blockLength),
+		lines = _.sidebar.children[0].children,
+		len   = lines.length;
+
+	for (let i = 0; i < len; i++) {
+		var line = lines[i];
+		if (line.dataset.blockNum == firstBlockNum) {
+			line.classList.add("marked");
+		} else if (line.dataset.blockNum == lastBlockNum) {
+			line.classList.add("marked");
+		} else {
+			// console.log(`line.classList`, line.classList);
+			line.classList.remove("marked");
+		}
+	}
+}
+
 
 function getSymbolRowEl(lineNum) {
 	return eHTML(getSymbolRowStr(lineNum));

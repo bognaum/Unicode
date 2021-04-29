@@ -1,64 +1,22 @@
-import virtualScrolling from "./virtual-scrolling/virtual-scrolling.js";
 import symbolModalWindow from "./symbol-modal-window.js";
-// import util              from "./util.js";
-// import rendering         from "./rendering.js";
 import _                 from "./settings.js";
-
 import {
 	eHTML,
 	getParentLine,
 	selectElement,
 	clearSelection,
-	generateUTF16Char,
 } from "./util.js";
-
 import {
-	getSymbolRowEl,
-	getSymbolBlokEl,
-	getBlockNumLineEl,
-	getSymbolCellStr,
-	getSymbolRowStr,
-	getBlockNumLineStr,
+	articleAPI,
+	sidebarAPI,
 } from "./rendering.js";
 
-_.countOfAllLines = Math.ceil((_.end - _.start) / _.rowLength);
-_.countOfAllBlocks = Math.ceil((_.end - _.start) / _.blockLength);
 
 
 font_fam.value = getComputedStyle(document.body).fontFamily;
 font_indicator.textContent = getComputedStyle(font_indicator).fontFamily;
 
 
-const 
-	articleAPI = virtualScrolling(
-		_.article, 
-		getSymbolRowEl, 
-		_.countOfAllLines, 
-		_.cellH
-	),
-	sidebarAPI = virtualScrolling(
-		_.sidebar, 
-		getBlockNumLineEl, 
-		_.countOfAllBlocks, 
-		_.blockNumLineHeight
-	);
-
-
-
-articleAPI.onAfterRender = function(e){
-	setTimeout(function() {
-		afterArticleRender();
-		afterArticleScroll();
-	})
-
-}
-
-sidebarAPI.onAfterRender = function(e) {
-	afterArticleScroll();
-}
-
-afterArticleRender();
-afterArticleScroll();
 
 // Events ↓
 
@@ -192,33 +150,6 @@ document.body.onchange = function h_BodyChange(e) {
 document.querySelector("#sidebar").onwheel = function h_kNumWheel(e) {
 	e.preventDefault();
 	this.scrollTop += Math.sign(e.deltaY) * 35;
-}
-
-function afterArticleRender(){
-	sidebarAPI.setOnMiddle(
-		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
-	);
-	
-}
-
-function afterArticleScroll() {
-	const 
-		firstBlockNum = Math.floor(articleAPI.getFirstFullyVisibleLineNum() * _.rowLength / _.blockLength),
-		lastBlockNum = Math.floor(articleAPI.getLastFullyVisibleLineNum() * _.rowLength / _.blockLength),
-		lines = _.sidebar.children[0].children,
-		len   = lines.length;
-
-	for (let i = 0; i < len; i++) {
-		var line = lines[i];
-		if (line.dataset.blockNum == firstBlockNum) {
-			line.classList.add("marked");
-		} else if (line.dataset.blockNum == lastBlockNum) {
-			line.classList.add("marked");
-		} else {
-			// console.log(`line.classList`, line.classList);
-			line.classList.remove("marked");
-		}
-	}
 }
 
 function updateFontCss() {
