@@ -1,4 +1,14 @@
 import virtualScrolling from "./virtual-scrolling/virtual-scrolling.js";
+import symbolModalWindow from "./symbol-modal-window.js";
+import util              from "./util.js";
+
+const {
+	eHTML,
+	getParentLine,
+	selectElement,
+	clearSelection,
+	generateUTF16Char,
+} = util;
 
 const _ = {
 	cellW: 60,
@@ -25,8 +35,6 @@ const _ = {
 _.countOfAllLines = Math.ceil((_.end - _.start) / _.rowLength);
 _.countOfAllBlocks = Math.ceil((_.end - _.start) / _.blockLength);
 
-
-const cHtmlShell = document.createElement("div");
 
 font_fam.value = getComputedStyle(document.body).fontFamily;
 font_indicator.textContent = getComputedStyle(font_indicator).fontFamily;
@@ -73,7 +81,7 @@ document.body.onclick = function h_BodyClick(e) {
 			articleAPI.setOnTop(t.dataset.blockNum * _.blockLength / _.rowLength);
 		} else 
 		if (t.classList.contains("smw-close-btn")) {
-			closeSymbolModalWindow();
+			symbolModalWindow.close();
 		} else 
 		if (t.classList.contains("smw-copy-symbol-btn")) {
 			selectElement(document.querySelector(".smw-symbol"));
@@ -84,7 +92,7 @@ document.body.onclick = function h_BodyClick(e) {
 			var 
 				symbol = document.querySelector(".smw-symbol").textContent,
 				url = `https://www.google.com/search?q=${encodeURIComponent(symbol)}`,
-				a = create(`<a target="_blank" href="${url}">#</a>`);
+				a = eHTML(`<a target="_blank" href="${url}">#</a>`);
 				document.body.appendChild(a);
 				a.click();
 				document.body.removeChild(a);
@@ -95,7 +103,7 @@ document.body.onclick = function h_BodyClick(e) {
 				num    = mWin.dataset.number * 1,
 				prev   = (0 < num)? num - 1 : num,
 				rowNum = prev     ? Math.floor(prev / _.rowLength) : 0;
-			openSymbolModalWindow(prev);
+			symbolModalWindow.open(prev);
 			articleAPI.setOnMiddle(rowNum);
 		} else
 		if (t.classList.contains("smw-next-symbol-btn")) {
@@ -104,7 +112,7 @@ document.body.onclick = function h_BodyClick(e) {
 				num    = mWin.dataset.number * 1,
 				next   = num + 1,
 				rowNum = Math.floor(next / _.rowLength);
-			openSymbolModalWindow(next);
+			symbolModalWindow.open(next);
 			articleAPI.setOnMiddle(rowNum);
 		} else 
 		if (t.id == "search_img_gliph") {
@@ -125,12 +133,12 @@ document.body.onclick = function h_BodyClick(e) {
 	}
 
 	if (e.target.classList.contains("smw-glass-cower")) {
-		closeSymbolModalWindow();
+		symbolModalWindow.close();
 	} else if (e.target.classList.contains("open-smw")) {
 		var
 			cell = getParentLine(e.target).find((v) => v.dataset.charNum !== undefined),
 			num = cell.dataset.charNum * 1;
-		openSymbolModalWindow(num);
+		symbolModalWindow.open(num);
 	}
 
 	if (e.target.classList.contains('set-font-list-item')) {
@@ -185,7 +193,7 @@ document.body.onchange = function h_BodyChange(e) {
 		}
 
 		let rowNum = Math.floor(num / _.rowLength);
-		openSymbolModalWindow(num);
+		symbolModalWindow.open(num);
 		articleAPI.setOnMiddle(rowNum);
 
 		t.select();
@@ -236,160 +244,21 @@ function updateFontCss() {
 	font_style_css.textContent = str;
 	font_indicator.textContent = getComputedStyle(font_indicator).fontFamily;
 	// document.head.appendChild(font_style_css);
-	setSymbolHeightData();
+	symbolModalWindow.setSymbolHeightData();
 }
 
 // Events ⭡
 
-// Symbol window functions ↓
 
-function openSymbolModalWindow(num) {
-	num = num * 1;
-	var
-		mWin = document.querySelector(".symbol-modal-window"),
-		symbol = generateUTF16Char(num),
-		str16 = num.toString(16).toUpperCase().padStart(4, "0"),
-		ftCont = mWin.querySelector(".smw-features-site"),
-		// bytesN = (num <= 0x7F)? 1 : (num <= 0x7FF)? 2 : (num <= 0xFFFF)? 3 : (num <= 0x10FFFF)? 4 : 5,
-		bytesN = (num < 0x80)? 1 : (num < 0x800)? 2 : (num < 0x10000)? 3 : (num < 0x110000)? 4 : 5,
-		uriCoded,
-		uriComponentCoded,
-		escapeCoded;
-	try {
-		uriCoded = encodeURI(symbol);
-	} catch(err) {
-		uriCoded = " - - - ";
-	}
-	try {
-		uriComponentCoded = encodeURIComponent(symbol);
-	} catch(err) {
-		uriComponentCoded = " - - - ";
-	}
-	try {
-		escapeCoded = escape(symbol);
-	} catch(err) {
-		escapeCoded = " - - - ";
-	}
-	mWin.classList.add("visible");
-	mWin.dataset.number = num;
-	document.querySelector("#article").classList.add("blured");
-	document.querySelector("#sidebar").classList.add("blured");
-	document.querySelector(".smw-symbol").textContent = symbol;
-	ftCont.innerHTML = `
-		<table>
-			<tbody>
-				<tr>
-					<td>DEC</td>
-					<td class="selectable">${num}</td>
-				</tr>
-				<tr>
-					<td>0x</td>
-					<td class="selectable">${num.toString(16).toUpperCase()}</td>
-				</tr>
-				<tr>
-					<td>UTF-8</td>
-					<td class="selectable">${getUTF8Code(num)}</td>
-				</tr>
-				<tr>
-					<td>UTF-16BE</td>
-					<td class="selectable">${getUTF16Code(num)}</td>
-				</tr>
-				<tr>
-					<td>UTF-32BE</td>
-					<td class="selectable">${getUTF32Code(num)}</td>
-				</tr>
-				<tr>
-					<td>Unicode plane</td>
-					<td class="selectable">${Math.ceil((num + 1) / 0x10000)}</td>
-				</tr>
-				<tr>
-					<td>Line neight - subject (normal)</td>
-					<td>
-						<span class="selectable subj-lh-em"></span><span class="main-color">em</span>
-						<span class="main-color">(</span
-							><span class="selectable norm-lh-em"></span
-						><span class="main-color">em)</span>
-					</td>
-				</tr>
-				<tr>
-					<td>HTML entity</td>
-					<td class="selectable">&amp;#${num};</td>
-				</tr>
-				<tr>
-					<td>JS string</td>
-					<td class="selectable">\\u${str16}</td>
-				</tr>
-				<tr>
-					<td>CSS content</td>
-					<td class="selectable">\\${str16}</td>
-				</tr>
-				<tr>
-					<td>URI</td>
-					<td class="selectable">${uriCoded}</td>
-				</tr>
-				<tr>
-					<td>URI component</td>
-					<td class="selectable">${uriComponentCoded}</td>
-				</tr>
-				<tr>
-					<td>escape</td>
-					<td class="selectable">${escapeCoded}</td>
-				</tr>
-			</tbody>
-		</table>
-	`;
-	
-	setSymbolHeightData()
-}
-
-function setSymbolHeightData() {
-	const 
-		mWin = document.querySelector(".symbol-modal-window"),
-		table = {
-			"subj-line-height" : mWin.querySelector(".subj-lh-em"),
-			"norm-line-height" : mWin.querySelector(".norm-lh-em"),
-		},
-		symbols = {
-			normal : mWin.querySelector(".smw-standard-character"),
-			subject : mWin.querySelector(".smw-symbol")
-		};
-
-	const 
-		normFZ  = parseFloat(getComputedStyle(symbols.normal).fontSize),
-		subjFZ  = parseFloat(getComputedStyle(symbols.subject).fontSize),
-		fz      = subjFZ,
-
-
-		normBCR = symbols.normal.getBoundingClientRect(),
-		normH   = normBCR.height,
-		normT   = normBCR.top,
-		normB   = normBCR.bottom,
-
-		subjBCR = symbols.subject.getBoundingClientRect(),
-		subjH   = subjBCR.height,
-		subjT   = subjBCR.top,
-		subjB   = subjBCR.bottom;
-
-	table["subj-line-height"].textContent = subjH / fz;
-	table["norm-line-height"].textContent = normH / fz;
-}
-
-function closeSymbolModalWindow() {
-	document.querySelector(".symbol-modal-window").classList.remove("visible");
-	document.querySelector("#article").classList.remove("blured");
-	document.querySelector("#sidebar").classList.remove("blured");
-}
-
-// Symbol window functions ⭡
 
 // Rendering functions ⭣
 
 function getSymbolRowEl(lineNum) {
-	return create(getSymbolRowStr(lineNum));
+	return eHTML(getSymbolRowStr(lineNum));
 }
 
 function getSymbolBlokEl(blockNum) {
-	var block = create(`
+	var block = eHTML(`
 		<div class="symbol-block">
 			<div class="block-header"></div>
 			<div class="block-body"></div>
@@ -399,7 +268,7 @@ function getSymbolBlokEl(blockNum) {
 }
 
 function getBlockNumLineEl(lineNum) {
-	return create(getBlockNumLineStr(lineNum));
+	return eHTML(getBlockNumLineStr(lineNum));
 }
 
 
@@ -465,110 +334,3 @@ function getBlockNumLineStr(lineNum) {
 
 // Rendering functions ⭡
 
-// General purpose functions ⭣
-
-function create(html) {
-	cHtmlShell.innerHTML = html;
-	return cHtmlShell.children[0];
-}
-
-function getParentLine(el) {
-	var arr = [el];
-	while (el = el.parentElement)
-		arr.push(el);
-	return arr;
-}
-
-function selectElement(el) {
-	var 
-		// r = new Range(),
-		r = document.createRange(),
-		s = window.getSelection();
-		
-	r.selectNodeContents(el);
-	s.removeAllRanges();
-	s.addRange(r);
-	console.log(s.toString());
-	return s.toString();
-}
-
-function clearSelection() {
-	var 
-		s = window.getSelection(),
-		text = s.toString();
-	s.removeAllRanges();
-	return text;
-}
-
-function generateUTF16Char(num) {
-	if (num < 0x10000)
-		return String.fromCharCode(num);
-	else if (num < 0x110000) {
-		num = num - 0x10000;
-		var 
-			num1 = 0xD800 + ((num & 0xFFC00) >>> 10),
-			num2 = 0xDC00 + (num & 0x3FF);
-		return String.fromCharCode(num1)+String.fromCharCode(num2);
-	} else {
-		return "Err";
-	}
-}
-
-function getUTF8Code(num) {
-	var t = 
-		num < 0x80     ? "0xxxxxxx":
-		num < 0x800    ? "110xxxxx 10xxxxxx":
-		num < 0x10000  ? "1110xxxx 10xxxxxx 10xxxxxx":
-		num < 0x110000 ? "11110xxx 10xxxxxx 10xxxxxx 10xxxxxx":
-			null;
-
-	if (!t)
-		console.error("(!)-USER'S ", "getUTF8Code("+num+")", 
-			"Maximum number exceeded.", "Max number =", 0x110000 - 1, 
-			"Received argument =", num);
-
-	return codingByTempl(t, num);
-}
-
-function getUTF16Code(num) {
-	var t = 
-		num < 0x10000  ? "xxxxxxxx xxxxxxxx" :
-		num < 0x110000 ? "110110xx xxxxxxxx 110111xx xxxxxxxx" :
-			null;
-
-	if (!t)
-		console.error("(!)-USER'S ", "getUTF16Code("+num+")", 
-			"Maximum number exceeded.", "Max number =", 0x110000 - 1, 
-			"Received argument =", num);
-
-	return codingByTempl(t, num);
-}
-
-function getUTF32Code(num) {
-	var t = 
-		num < 0x110000  ? "xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx" :
-			null;
-
-	if (!t)
-		console.error("(!)-USER'S ", "getUTF32Code("+num+")", 
-			"Maximum number exceeded.", "Max number =", 0x110000 - 1, 
-			"Received argument =", num);
-
-	return codingByTempl(t, num);
-}
-
-function codingByTempl(t, num) {
-	var 
-		bin = num.toString(2).split(""), 
-		code = [];
-
-	for (var i = t.length - 1; -1 < i ; i --) 
-		code[i] = 
-			t[i] == "x" ? `<span class="data-bit"><span>${bin.pop() || "0"}</span></span>` : 
-			t[i] == " " ? `</span><span class="byte">` : 
-				`<span class="sp-bit"><span>${t[i]}</span></span>`;
-	
-	return `<span class="byte">${code.join("")}</span>`;
-}
-
-// General purpose functions ⭡
