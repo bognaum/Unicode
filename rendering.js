@@ -50,8 +50,8 @@ function afterArticleRender(){
 	);
 	const 
 		formula = (rowNum) => Math.floor((rowNum + 1) * _.rowLength / _.planeLength),
-		first   = formula(articleAPI.getFirstFullyVisibleLineNum()),
-		last    = formula(articleAPI.getLastFullyVisibleLineNum() );
+		first   = formula(articleAPI.getFirstSemiVisibleLineNum()),
+		last    = formula(articleAPI.getLastSemiVisibleLineNum() );
 	setPlanes(first, last);
 }
 
