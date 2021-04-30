@@ -124,8 +124,10 @@ document.body.onchange = function h_BodyChange(e) {
 	if (t == search_field) {
 		const 
 			v = t.value,
-			num = v.codePointAt();
+			num = v.codePointAt(),
+			rowN = inTab.the.row.ofPoint(num);
 
+		articleAPI.setOnMiddle(rowN);
 		symbolModalWindow.open(num);
 		t.select();
 	}
