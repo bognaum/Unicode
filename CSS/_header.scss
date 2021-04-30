@@ -9,7 +9,8 @@ div#header {
 			font-family: consolas, monospace;
 			// font-weight: bold;
 			cursor: pointer;
-			outline: 1px solid $main_c;
+			// outline: 1px solid $main_c;
+			border: 1px solid $main_c;
 			flex-grow: 1;
 			&.marked {
 				background-color: $main_c;

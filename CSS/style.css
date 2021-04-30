@@ -50,7 +50,7 @@ div#header .planes {
     text-align: center;
     font-family: consolas, monospace;
     cursor: pointer;
-    outline: 1px solid #0a8;
+    border: 1px solid #0a8;
     flex-grow: 1; }
     div#header .planes > .planes__plane-number.marked {
       background-color: #0a8;
