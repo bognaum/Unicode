@@ -1,3 +1,5 @@
+import _ from "./settings.js";
+
 export {
 	eHTML,
 	getParentLine,
@@ -8,7 +10,57 @@ export {
 	getUTF16Code,
 	getUTF32Code,
 	codingByTempl,
+	getRowN,
+	getBlockN,
+	getPlaneN,
 };
+
+const NumberGetter_proto = {
+	ofRowRange: function(num) {
+		return [
+			this(num * _.rowLength), 
+			this((num + 1) * _.rowLength - 1)
+		];
+	},
+	ofBlockRange: function(num) {
+		return [
+			this(num * _.blockLength), 
+			this((num + 1) * _.blockLength - 1)
+		];
+	},
+	ofPlaneRange: function(num) {
+		return [
+			this(num * _.planeLength), 
+			this((num + 1) * _.planeLength - 1)
+		];
+	}
+};
+
+insertProto(NumberGetter_proto, getRowN);
+insertProto(NumberGetter_proto, getBlockN);
+insertProto(NumberGetter_proto, getPlaneN);
+
+function getRowN(cpNum) {
+	return Math.floor(cpNum / _.rowLength);
+}
+
+function getBlockN(cpNum) {
+	return Math.floor(cpNum / _.blockLength);
+}
+
+function getPlaneN(cpNum) {
+	return Math.floor(cpNum / _.planeLength);
+}
+
+function insertProto(proto, ob) {
+	return Object.setPrototypeOf(
+		ob, 
+		Object.setPrototypeOf(
+			proto, 
+			Object.getPrototypeOf(ob)
+		)
+	);
+}
 
 function eHTML(code, shell=null) {
 	const _shell = 

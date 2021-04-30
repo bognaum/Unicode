@@ -5,6 +5,9 @@ import {
 	getParentLine,
 	selectElement,
 	clearSelection,
+	getRowN,
+	getBlockN,
+	getPlaneN,
 } from "./util.js";
 import {
 	articleAPI,
@@ -69,7 +72,7 @@ document.body.onclick = function h_BodyClick(e) {
 		if (t.classList.contains("planes__plane-number")) {
 			const 
 				planeNum = parseInt(t.dataset.plane),
-				rowNum   = planeNum * _.planeLength / _.rowLength;
+				rowNum   = getRowN.ofPlaneRange(planeNum)[0];
 			articleAPI.setOnTop(rowNum);
 		} else 
 			continue;

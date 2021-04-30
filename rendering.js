@@ -3,6 +3,9 @@ import _                 from "./settings.js";
 import {
 	eHTML,
 	generateUTF16Char,
+	getRowN,
+	getBlockN,
+	getPlaneN,
 } from "./util.js";
 
 export {
@@ -49,9 +52,8 @@ function afterArticleRender(){
 		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
 	);
 	const 
-		formula = (rowNum) => Math.floor((rowNum + 1) * _.rowLength / _.planeLength),
-		first   = formula(articleAPI.getFirstSemiVisibleLineNum()),
-		last    = formula(articleAPI.getLastSemiVisibleLineNum() );
+		first   = getPlaneN.ofRowRange(articleAPI.getFirstSemiVisibleLineNum())[0],
+		last    = getPlaneN.ofRowRange(articleAPI.getLastSemiVisibleLineNum() )[0];
 	setPlanes(first, last);
 }
 
