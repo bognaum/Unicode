@@ -1,172 +1,175 @@
-.symbol-modal-window.smw-glass-cower {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	text-align: center;
+.smw {
 	display: none;
-	white-space: nowrap;
-	overflow: auto;
 	&.visible {
 		display: block;
 	}
-	&:before {
-		content: "";
-		vertical-align: middle;
-		display: inline-block;
-		height: 100%;
-		// height: 500px;
-		// border: 1px solid #f00;
-	}
-	>.smw-frame {
-		background-color: $bg_c;
-		// border: 1px solid #777;
-		box-shadow: 0 0 10px #777;
-		vertical-align: middle;
-		display: inline-block;
-		// box-shadow: 0 0 20px #555;
-		>.smw-header {
-			text-align: right;
-			text-align: center;
-			margin: 5px;
-			>.btn-div {
-				display: inline-block;
-				cursor: pointer;
-				padding: 3px;
-				// transition: all .1s;
-				&:hover{
-					box-shadow: 
-						inset 0 0 2px $def_c, 
-						0 0 2px $def_c;
-				}
-				&:active{
-					background-color: #aaa;
-				}
-				>svg {
-					vertical-align: bottom;
-				}
-			}
-			>.btn-div.smw-close-btn {
-				float: right;
-			}
+	.smw__glass-cower {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		text-align: center;
+		white-space: nowrap;
+		overflow: auto;
+		
+		&:before {
+			content: "";
+			vertical-align: middle;
+			display: inline-block;
+			height: 100%;
+			// height: 500px;
+			// border: 1px solid #f00;
 		}
-		>.smw-body {
-			>* {
-				display: inline-block;
-				white-space: nowrap;
-				vertical-align: middle;
-				margin: 30px 50px;
-			}
-			>.smw-symbol-site {
-				position: relative;
-				// overflow: hidden;
-
-
-				
-				.str-line-wr {
-					width: 0;
+		>.smw__frame {
+			background-color: $bg_c;
+			// border: 1px solid #777;
+			box-shadow: 0 0 10px #777;
+			vertical-align: middle;
+			display: inline-block;
+			// box-shadow: 0 0 20px #555;
+			>.smw__header {
+				text-align: right;
+				text-align: center;
+				margin: 5px;
+				>.btn-div {
 					display: inline-block;
-					>.str-line {
-						position: absolute;
-						height: 0;
-						$indent : -10px;
-						left: $indent;
-						right: $indent;
-						border-bottom: 1px solid #777;
+					cursor: pointer;
+					padding: 3px;
+					// transition: all .1s;
+					&:hover{
+						box-shadow: 
+							inset 0 0 2px $def_c, 
+							0 0 2px $def_c;
 					}
-				}
-
-				.smw-standard-character {
-					font-size: 200px;
-					display: inline-block;
-					color: #555;
-					color: transparent;
-					width: 0;
-					>.swm-top-line-wr.str-line-wr {
-						margin-top: -1px;
-						vertical-align: top;
-						>.swm-top-line.str-line {}
+					&:active{
+						background-color: #aaa;
 					}
-					>.swm-base-line-wr.str-line-wr {
-						vertical-align: baseline;
-						>.swm-base-line.str-line {
-							left: -30px;
-							right: -30px;
-						}
-					}
-					>.swm-bottom-line-wr.str-line-wr {
+					>svg {
 						vertical-align: bottom;
-						>.swm-bottom-line.str-line {}
 					}
 				}
-
-				>.swm-symbol-border{
-					border: 1px dashed #777;
+				>.btn-div.smw__close-btn {
+					float: right;
+				}
+			}
+			>.smw__body {
+				>* {
 					display: inline-block;
-					>.smw-symbol {
-						white-space: pre;
-						font-size: 200px;
-						text-align: center;
-						color: $main_c;
-						cursor: pointer;
-						user-select: text;
-						&::selection {
-							background-color: #fff;
-							color: $bg_c;
+					white-space: nowrap;
+					vertical-align: middle;
+					margin: 30px 50px;
+				}
+				>.smw__symbol-site {
+					position: relative;
+					// overflow: hidden;
+	
+	
+					
+					.str-line-wr {
+						width: 0;
+						display: inline-block;
+						>.str-line {
+							position: absolute;
+							height: 0;
+							$indent : -10px;
+							left: $indent;
+							right: $indent;
+							border-bottom: 1px solid #777;
 						}
 					}
+	
+					.smw__standard-character {
+						font-size: 200px;
+						display: inline-block;
+						color: #555;
+						color: transparent;
+						width: 0;
+						>.swm-top-line-wr.str-line-wr {
+							margin-top: -1px;
+							vertical-align: top;
+							>.swm-top-line.str-line {}
+						}
+						>.swm-base-line-wr.str-line-wr {
+							vertical-align: baseline;
+							>.swm-base-line.str-line {
+								left: -30px;
+								right: -30px;
+							}
+						}
+						>.swm-bottom-line-wr.str-line-wr {
+							vertical-align: bottom;
+							>.swm-bottom-line.str-line {}
+						}
+					}
+	
+					>.swm-symbol-border{
+						border: 1px dashed #777;
+						display: inline-block;
+						>.smw__symbol {
+							white-space: pre;
+							font-size: 200px;
+							text-align: center;
+							color: $main_c;
+							cursor: pointer;
+							user-select: text;
+							&::selection {
+								background-color: #fff;
+								color: $bg_c;
+							}
+						}
+					}
+					
+					>.smw__symbol-controls-expander {
+						min-width: 1em;
+						font-size: 200px;
+					}
+	
 				}
-				
-				>.smw-symbol-controls-expander {
-					min-width: 1em;
-					font-size: 200px;
-				}
-
-			}
-			>.smw-features-site {
-				position: relative;
-				table {
-					padding: 10px;
-					// border: 1px solid $def_c;
-					>tbody {
-						>tr {
-							>td {
-								padding: 1px 10px;
-								&:nth-child(1) {
-									text-align: right;
-									color: $main_c;
-								}
-								&:nth-child(2) {
-									text-align: left;
-									cursor: pointer;
-									// font-style: italic;
-									font-family: consolas;
-									user-select: text;
-									&::selection {
-										background-color: #fff;
-										color: $bg_c;
+				>.smw__features-site {
+					position: relative;
+					table {
+						padding: 10px;
+						// border: 1px solid $def_c;
+						>tbody {
+							>tr {
+								>td {
+									padding: 1px 10px;
+									&:nth-child(1) {
+										text-align: right;
+										color: $main_c;
 									}
-									>.byte {
-										padding: 3px;
-										>.data-bit {
-											color: $main_c;
-											text-decoration: underline;
-											>span {
-												text-decoration: none;
-												color: $def_c;
-											}
+									&:nth-child(2) {
+										text-align: left;
+										cursor: pointer;
+										// font-style: italic;
+										font-family: consolas;
+										user-select: text;
+										&::selection {
+											background-color: #fff;
+											color: $bg_c;
 										}
-										>.sp-bit {
-											
+										>.byte {
+											padding: 3px;
+											>.data-bit {
+												color: $main_c;
+												text-decoration: underline;
+												>span {
+													text-decoration: none;
+													color: $def_c;
+												}
+											}
+											>.sp-bit {
+												
+											}
 										}
 									}
 								}
 							}
 						}
 					}
+	
 				}
-
 			}
 		}
 	}

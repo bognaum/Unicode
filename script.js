@@ -27,24 +27,24 @@ document.body.onclick = function h_BodyClick(e) {
 		if (t.classList.contains("block-num-line")) {
 			articleAPI.setOnTop(t.dataset.blockNum * _.blockLength / _.rowLength);
 		} else 
-		if (t.classList.contains("smw-close-btn")) {
+		if (t.classList.contains("smw__close-btn")) {
 			symbolModalWindow.close();
 		} else 
-		if (t.classList.contains("smw-copy-symbol-btn")) {
-			selectElement(document.querySelector(".smw-symbol"));
+		if (t.classList.contains("smw__copy-symbol-btn")) {
+			selectElement(document.querySelector(".smw__symbol"));
 			document.execCommand("copy");
 			setTimeout(clearSelection, 500);
 		} else
-		if (t.classList.contains("smw-googling-symbol-btn")) {
+		if (t.classList.contains("smw__googling-symbol-btn")) {
 			var 
-				symbol = document.querySelector(".smw-symbol").textContent,
+				symbol = document.querySelector(".smw__symbol").textContent,
 				url = `https://www.google.com/search?q=${encodeURIComponent(symbol)}`,
 				a = eHTML(`<a target="_blank" href="${url}">#</a>`);
 				document.body.appendChild(a);
 				a.click();
 				document.body.removeChild(a);
 		} else
-		if (t.classList.contains("smw-previous-symbol-btn")) {
+		if (t.classList.contains("smw__previous-symbol-btn")) {
 			var 
 				mWin   = document.querySelector(".symbol-modal-window"),
 				num    = mWin.dataset.number * 1,
@@ -53,7 +53,7 @@ document.body.onclick = function h_BodyClick(e) {
 			symbolModalWindow.open(prev);
 			articleAPI.setOnMiddle(rowNum);
 		} else
-		if (t.classList.contains("smw-next-symbol-btn")) {
+		if (t.classList.contains("smw__next-symbol-btn")) {
 			var 
 				mWin   = document.querySelector(".symbol-modal-window"),
 				num    = mWin.dataset.number * 1,
@@ -79,7 +79,7 @@ document.body.onclick = function h_BodyClick(e) {
 		setTimeout(clearSelection, 500);
 	}
 
-	if (e.target.classList.contains("smw-glass-cower")) {
+	if (e.target.classList.contains("smw__glass-cower")) {
 		symbolModalWindow.close();
 	} else if (e.target.classList.contains("open-smw")) {
 		var

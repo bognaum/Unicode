@@ -18,7 +18,7 @@ function open(num) {
 		mWin = document.querySelector(".symbol-modal-window"),
 		symbol = generateUTF16Char(num),
 		str16 = num.toString(16).toUpperCase().padStart(4, "0"),
-		ftCont = mWin.querySelector(".smw-features-site"),
+		ftCont = mWin.querySelector(".smw__features-site"),
 		// bytesN = (num <= 0x7F)? 1 : (num <= 0x7FF)? 2 : (num <= 0xFFFF)? 3 : (num <= 0x10FFFF)? 4 : 5,
 		bytesN = (num < 0x80)? 1 : (num < 0x800)? 2 : (num < 0x10000)? 3 : (num < 0x110000)? 4 : 5,
 		uriCoded,
@@ -43,7 +43,7 @@ function open(num) {
 	mWin.dataset.number = num;
 	document.querySelector("#article").classList.add("blured");
 	document.querySelector("#sidebar").classList.add("blured");
-	document.querySelector(".smw-symbol").textContent = symbol;
+	document.querySelector(".smw__symbol").textContent = symbol;
 	ftCont.innerHTML = `
 		<table>
 			<tbody>
@@ -119,8 +119,8 @@ function setSymbolHeightData() {
 			"norm-line-height" : mWin.querySelector(".norm-lh-em"),
 		},
 		symbols = {
-			normal : mWin.querySelector(".smw-standard-character"),
-			subject : mWin.querySelector(".smw-symbol")
+			normal : mWin.querySelector(".smw__standard-character"),
+			subject : mWin.querySelector(".smw__symbol")
 		};
 
 	const 

@@ -239,116 +239,117 @@ div.block-num-line {
   div.block-num-line.marked {
     color: #0a8; }
 
-.symbol-modal-window.smw-glass-cower {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  display: none;
-  white-space: nowrap;
-  overflow: auto; }
-  .symbol-modal-window.smw-glass-cower.visible {
+.smw {
+  display: none; }
+  .smw.visible {
     display: block; }
-  .symbol-modal-window.smw-glass-cower:before {
-    content: "";
-    vertical-align: middle;
-    display: inline-block;
-    height: 100%; }
-  .symbol-modal-window.smw-glass-cower > .smw-frame {
-    background-color: #222;
-    box-shadow: 0 0 10px #777;
-    vertical-align: middle;
-    display: inline-block; }
-    .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header {
-      text-align: right;
-      text-align: center;
-      margin: 5px; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div {
-        display: inline-block;
-        cursor: pointer;
-        padding: 3px; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div:hover {
-          box-shadow: inset 0 0 2px #bbb, 0 0 2px #bbb; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div:active {
-          background-color: #aaa; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div > svg {
-          vertical-align: bottom; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-header > .btn-div.smw-close-btn {
-        float: right; }
-    .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > * {
-      display: inline-block;
-      white-space: nowrap;
+  .smw .smw__glass-cower {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: auto; }
+    .smw .smw__glass-cower:before {
+      content: "";
       vertical-align: middle;
-      margin: 30px 50px; }
-    .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site {
-      position: relative; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .str-line-wr {
-        width: 0;
-        display: inline-block; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .str-line-wr > .str-line {
-          position: absolute;
-          height: 0;
-          left: -10px;
-          right: -10px;
-          border-bottom: 1px solid #777; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character {
-        font-size: 200px;
-        display: inline-block;
-        color: #555;
-        color: transparent;
-        width: 0; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-top-line-wr.str-line-wr {
-          margin-top: -1px;
-          vertical-align: top; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-base-line-wr.str-line-wr {
-          vertical-align: baseline; }
-          .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-base-line-wr.str-line-wr > .swm-base-line.str-line {
-            left: -30px;
-            right: -30px; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site .smw-standard-character > .swm-bottom-line-wr.str-line-wr {
-          vertical-align: bottom; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border {
-        border: 1px dashed #777;
-        display: inline-block; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border > .smw-symbol {
-          white-space: pre;
-          font-size: 200px;
-          text-align: center;
-          color: #0a8;
+      display: inline-block;
+      height: 100%; }
+    .smw .smw__glass-cower > .smw__frame {
+      background-color: #222;
+      box-shadow: 0 0 10px #777;
+      vertical-align: middle;
+      display: inline-block; }
+      .smw .smw__glass-cower > .smw__frame > .smw__header {
+        text-align: right;
+        text-align: center;
+        margin: 5px; }
+        .smw .smw__glass-cower > .smw__frame > .smw__header > .btn-div {
+          display: inline-block;
           cursor: pointer;
-          user-select: text; }
-          .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .swm-symbol-border > .smw-symbol::selection {
-            background-color: #fff;
-            color: #222; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-symbol-site > .smw-symbol-controls-expander {
-        min-width: 1em;
-        font-size: 200px; }
-    .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site {
-      position: relative; }
-      .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table {
-        padding: 10px; }
-        .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td {
-          padding: 1px 10px; }
-          .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(1) {
-            text-align: right;
-            color: #0a8; }
-          .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) {
-            text-align: left;
+          padding: 3px; }
+          .smw .smw__glass-cower > .smw__frame > .smw__header > .btn-div:hover {
+            box-shadow: inset 0 0 2px #bbb, 0 0 2px #bbb; }
+          .smw .smw__glass-cower > .smw__frame > .smw__header > .btn-div:active {
+            background-color: #aaa; }
+          .smw .smw__glass-cower > .smw__frame > .smw__header > .btn-div > svg {
+            vertical-align: bottom; }
+        .smw .smw__glass-cower > .smw__frame > .smw__header > .btn-div.smw__close-btn {
+          float: right; }
+      .smw .smw__glass-cower > .smw__frame > .smw__body > * {
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: middle;
+        margin: 30px 50px; }
+      .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site {
+        position: relative; }
+        .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .str-line-wr {
+          width: 0;
+          display: inline-block; }
+          .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .str-line-wr > .str-line {
+            position: absolute;
+            height: 0;
+            left: -10px;
+            right: -10px;
+            border-bottom: 1px solid #777; }
+        .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .smw__standard-character {
+          font-size: 200px;
+          display: inline-block;
+          color: #555;
+          color: transparent;
+          width: 0; }
+          .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .smw__standard-character > .swm-top-line-wr.str-line-wr {
+            margin-top: -1px;
+            vertical-align: top; }
+          .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .smw__standard-character > .swm-base-line-wr.str-line-wr {
+            vertical-align: baseline; }
+            .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .smw__standard-character > .swm-base-line-wr.str-line-wr > .swm-base-line.str-line {
+              left: -30px;
+              right: -30px; }
+          .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site .smw__standard-character > .swm-bottom-line-wr.str-line-wr {
+            vertical-align: bottom; }
+        .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site > .swm-symbol-border {
+          border: 1px dashed #777;
+          display: inline-block; }
+          .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site > .swm-symbol-border > .smw__symbol {
+            white-space: pre;
+            font-size: 200px;
+            text-align: center;
+            color: #0a8;
             cursor: pointer;
-            font-family: consolas;
             user-select: text; }
-            .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2)::selection {
+            .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site > .swm-symbol-border > .smw__symbol::selection {
               background-color: #fff;
               color: #222; }
-            .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte {
-              padding: 3px; }
-              .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit {
-                color: #0a8;
-                text-decoration: underline; }
-                .symbol-modal-window.smw-glass-cower > .smw-frame > .smw-body > .smw-features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit > span {
-                  text-decoration: none;
-                  color: #bbb; }
+        .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site > .smw__symbol-controls-expander {
+          min-width: 1em;
+          font-size: 200px; }
+      .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site {
+        position: relative; }
+        .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table {
+          padding: 10px; }
+          .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td {
+            padding: 1px 10px; }
+            .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(1) {
+              text-align: right;
+              color: #0a8; }
+            .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) {
+              text-align: left;
+              cursor: pointer;
+              font-family: consolas;
+              user-select: text; }
+              .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2)::selection {
+                background-color: #fff;
+                color: #222; }
+              .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte {
+                padding: 3px; }
+                .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit {
+                  color: #0a8;
+                  text-decoration: underline; }
+                  .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit > span {
+                    text-decoration: none;
+                    color: #bbb; }
 
 /*# sourceMappingURL=style.css.map */
