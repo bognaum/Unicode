@@ -8,6 +8,7 @@ export default {
 	end : 0x10FFFF,
 	blockLength : 256,
 	rowLength : 16,
+	planeLength : 0x10000,
 
 	sidebar : document.querySelector("#sidebar"),
 	article : document.querySelector("#article"),

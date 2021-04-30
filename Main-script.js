@@ -66,6 +66,12 @@ document.body.onclick = function h_BodyClick(e) {
 			var input = document.querySelector("#search_field");
 			document.body.onchange({target: input});
 		} else 
+		if (t.classList.contains("planes__plane-number")) {
+			const 
+				planeNum = parseInt(t.dataset.plane),
+				rowNum   = planeNum * _.planeLength / _.rowLength;
+			articleAPI.setOnTop(rowNum);
+		} else 
 			continue;
 		break;
 

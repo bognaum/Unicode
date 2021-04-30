@@ -48,7 +48,11 @@ function afterArticleRender(){
 	sidebarAPI.setOnMiddle(
 		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
 	);
-	
+	const 
+		formula = (rowNum) => Math.floor((rowNum + 1) * _.rowLength / _.planeLength),
+		first   = formula(articleAPI.getFirstFullyVisibleLineNum()),
+		last    = formula(articleAPI.getLastFullyVisibleLineNum() );
+	setPlanes(first, last);
 }
 
 function afterArticleScroll() {
@@ -69,6 +73,16 @@ function afterArticleScroll() {
 			line.classList.remove("marked");
 		}
 	}
+}
+
+function setPlanes(...args) {
+	document.querySelectorAll(".planes__plane-number").forEach((v) => {
+		const num = parseInt(v.dataset.plane);
+		if(args.includes(num))
+			v.classList.add("marked");
+		else
+			v.classList.remove("marked");
+	});
 }
 
 

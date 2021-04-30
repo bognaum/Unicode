@@ -22,12 +22,12 @@ body {
   #container div#header {
     top: 0;
     right: 0;
-    bottom: calc(100% - 50px);
+    bottom: calc(100% - 70px);
     left: 0;
     z-index: 2;
     border-bottom: 1px solid #777; }
   #container div#article {
-    top: 50px;
+    top: 70px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -35,13 +35,29 @@ body {
     #container div#article.blured {
       filter: blur(5px); }
   #container div#sidebar {
-    top: 50px;
+    top: 70px;
     right: 16px;
     bottom: 0;
     left: calc(100% - 150px - 16px);
     overflow: hidden; }
     #container div#sidebar.blured {
       filter: blur(5px); }
+
+div#header .planes {
+  display: flex;
+  align-items: flex-start; }
+  div#header .planes > .planes__plane-number {
+    text-align: center;
+    font-family: consolas, monospace;
+    cursor: pointer;
+    outline: 1px solid #0a8;
+    flex-grow: 1; }
+    div#header .planes > .planes__plane-number.marked {
+      background-color: #0a8;
+      color: #222;
+      font-weight: bold; }
+      div#header .planes > .planes__plane-number.marked:before {
+        content: "plane "; }
 
 div#header > .instruns {
   height: 50px;
