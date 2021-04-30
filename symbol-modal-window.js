@@ -52,8 +52,8 @@ function open(num) {
 					<td class="selectable">${num}</td>
 				</tr>
 				<tr>
-					<td>0x</td>
-					<td class="selectable">${num.toString(16).toUpperCase()}</td>
+					<td>HEX</td>
+					<td class="selectable"><span class="main-color">0x</span>${num.toString(16).toUpperCase()}</td>
 				</tr>
 				<tr>
 					<td>UTF-8</td>
