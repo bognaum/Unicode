@@ -152,15 +152,10 @@
 										>.byte {
 											padding: 3px;
 											>.data-bit {
-												color: $main_c;
-												text-decoration: underline;
-												>span {
-													text-decoration: none;
-													color: $def_c;
-												}
+												text-decoration: underline $main-c;
 											}
 											>.sp-bit {
-												
+												text-decoration: underline $red;
 											}
 										}
 									}

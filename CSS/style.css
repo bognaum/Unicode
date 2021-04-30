@@ -346,10 +346,8 @@ div.block-num-line {
               .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte {
                 padding: 3px; }
                 .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit {
-                  color: #0a8;
-                  text-decoration: underline; }
-                  .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit > span {
-                    text-decoration: none;
-                    color: #bbb; }
+                  text-decoration: underline #0a8; }
+                .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte > .sp-bit {
+                  text-decoration: underline #f77; }
 
 /*# sourceMappingURL=style.css.map */
