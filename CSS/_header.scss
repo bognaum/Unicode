@@ -1,147 +1,151 @@
 div#header { 
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	>div.h-block { 
-		text-align: center;
-		>div.name-field { 
-			display: inline-block;
-			color: $main_c;
-			&:after {
-				content: " : ";
-			}
-		} 
-		>div.value-fielf { 
-			display: inline-block;
-			// color: #333;
-			>input,
-			>select {
-				background-color: $bg_c;
-				color: $def_c;
-				font-weight: bold;
-				// border: 1px solid #777;
-				border: 1px solid transparent;
-				border: 1px solid #777;
-				padding: 5px;
-				text-align: center;
-				&::selection {
-					background-color: #fff;
-					color: $bg_c;
+	
+	>.instruns {
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		>div.instruns__block { 
+			text-align: center;
+			>div.name-field { 
+				display: inline-block;
+				color: $main_c;
+				&:after {
+					content: " : ";
 				}
-				option {
+			} 
+			>div.value-fielf { 
+				display: inline-block;
+				// color: #333;
+				>input,
+				>select {
+					background-color: $bg_c;
+					color: $def_c;
+					font-weight: bold;
+					// border: 1px solid #777;
+					border: 1px solid transparent;
+					border: 1px solid #777;
+					padding: 5px;
 					text-align: center;
 					&::selection {
 						background-color: #fff;
 						color: $bg_c;
 					}
-				}
-			}
-			label {
-
-				$bd-th : 2px;
-				$btn-c : $def_c;
-				// display: inline-block;
-				cursor: pointer; 
-				
-				>input { 
-					display: none;
-					user-select: text;
-				} 
-				
-				>div, >div>div{
-					display: inline-block;
-				}
-
-				>div.chb-cell { 
-					$size : 15px;
-					font-size: 1px;
-					width: $size;
-					height: $size;
-					margin: 5px;
-					background-color: $bg_c;
-					border: $bd-th solid $btn-c;
-					vertical-align: middle;
-					>div.chb-cell-inner { 
-						margin-top: -$size * .8;
-						// vertical-align: middle;
-						font-size: $size * 1.8;
-						color: transparent;
-						// color: #f00;
-						font-weight: bold;
-						&:before{
-							content: "\2713";
+					option {
+						text-align: center;
+						&::selection {
+							background-color: #fff;
+							color: $bg_c;
 						}
+					}
+				}
+				label {
+	
+					$bd-th : 2px;
+					$btn-c : $def_c;
+					// display: inline-block;
+					cursor: pointer; 
+					
+					>input { 
+						display: none;
+						user-select: text;
 					} 
-				} 
-
-				>input:checked+div.chb-cell>div.chb-cell-inner{
-					color: #99f;
-					color: $main_c;
-				}
-
-				>div.caption { 
-					// font-size: 14px;
-					margin-right: 10px;
-				} 
-			} 
-			div.relatve-base { 
-				position: relative;
-				height: 0;
-				>div.drop-down-list-frame { 
-					display: none;
-					position: absolute;
-					right: 0;
-					padding: 10px 0;
-					border: 1px solid $main_c;
-					background-color: $bg_c;
-					text-align: left;
-					>div.set-font-list-item { 
-						cursor: pointer;
-						padding: 0 10px;
-						padding-left: 20px;
-						&.typical {
-							padding-left: 10px;
-							font-size: 1.2em;
-							font-style: italic;
-						}
-						&:hover {
-							// color: $main_c;
-							background-color: #555;
-						}
-					} 
-				} 
-			} 
-			&:hover{
-				div.relatve-base { 
-					>div.drop-down-list-frame { 
-						display: block;
-						>div.set-font-list-item { 
-							
+					
+					>div, >div>div{
+						display: inline-block;
+					}
+	
+					>div.chb-cell { 
+						$size : 15px;
+						font-size: 1px;
+						width: $size;
+						height: $size;
+						margin: 5px;
+						background-color: $bg_c;
+						border: $bd-th solid $btn-c;
+						vertical-align: middle;
+						>div.chb-cell-inner { 
+							margin-top: -$size * .8;
+							// vertical-align: middle;
+							font-size: $size * 1.8;
+							color: transparent;
+							// color: #f00;
+							font-weight: bold;
+							&:before{
+								content: "\2713";
+							}
 						} 
 					} 
+	
+					>input:checked+div.chb-cell>div.chb-cell-inner{
+						color: #99f;
+						color: $main_c;
+					}
+	
+					>div.caption { 
+						// font-size: 14px;
+						margin-right: 10px;
+					} 
+				} 
+				div.relatve-base { 
+					position: relative;
+					height: 0;
+					>div.drop-down-list-frame { 
+						display: none;
+						position: absolute;
+						right: 0;
+						padding: 10px 0;
+						border: 1px solid $main_c;
+						background-color: $bg_c;
+						text-align: left;
+						>div.set-font-list-item { 
+							cursor: pointer;
+							padding: 0 10px;
+							padding-left: 20px;
+							&.typical {
+								padding-left: 10px;
+								font-size: 1.2em;
+								font-style: italic;
+							}
+							&:hover {
+								// color: $main_c;
+								background-color: #555;
+							}
+						} 
+					} 
+				} 
+				&:hover{
+					div.relatve-base { 
+						>div.drop-down-list-frame { 
+							display: block;
+							>div.set-font-list-item { 
+								
+							} 
+						} 
+					}
 				}
-			}
+			} 
 		} 
-	} 
-
-	#favorites {
-		height: 30px;
-		width: 30px;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-		cursor: pointer;
-		&:hover {
-			color: $main_c;
-			// box-shadow: 0 0 10px $def_c;
-			text-shadow: 
-				0 0 10px #f00,
-				0 0 10px #f00,
-				0 0 10px #f00,
-				0 0 10px #f00,
-				0 0 10px #f00,
-			;
+	
+		#favorites {
+			height: 30px;
+			width: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			cursor: pointer;
+			&:hover {
+				color: $main_c;
+				// box-shadow: 0 0 10px $def_c;
+				text-shadow: 
+					0 0 10px #f00,
+					0 0 10px #f00,
+					0 0 10px #f00,
+					0 0 10px #f00,
+					0 0 10px #f00,
+				;
+			}
+	
 		}
-
 	}
 } 

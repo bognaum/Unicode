@@ -43,21 +43,22 @@ body {
     #container div#sidebar.blured {
       filter: blur(5px); }
 
-div#header {
+div#header > .instruns {
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-around; }
-  div#header > div.h-block {
+  div#header > .instruns > div.instruns__block {
     text-align: center; }
-    div#header > div.h-block > div.name-field {
+    div#header > .instruns > div.instruns__block > div.name-field {
       display: inline-block;
       color: #0a8; }
-      div#header > div.h-block > div.name-field:after {
+      div#header > .instruns > div.instruns__block > div.name-field:after {
         content: " : "; }
-    div#header > div.h-block > div.value-fielf {
+    div#header > .instruns > div.instruns__block > div.value-fielf {
       display: inline-block; }
-      div#header > div.h-block > div.value-fielf > input,
-      div#header > div.h-block > div.value-fielf > select {
+      div#header > .instruns > div.instruns__block > div.value-fielf > input,
+      div#header > .instruns > div.instruns__block > div.value-fielf > select {
         background-color: #222;
         color: #bbb;
         font-weight: bold;
@@ -65,25 +66,25 @@ div#header {
         border: 1px solid #777;
         padding: 5px;
         text-align: center; }
-        div#header > div.h-block > div.value-fielf > input::selection,
-        div#header > div.h-block > div.value-fielf > select::selection {
+        div#header > .instruns > div.instruns__block > div.value-fielf > input::selection,
+        div#header > .instruns > div.instruns__block > div.value-fielf > select::selection {
           background-color: #fff;
           color: #222; }
-        div#header > div.h-block > div.value-fielf > input option,
-        div#header > div.h-block > div.value-fielf > select option {
+        div#header > .instruns > div.instruns__block > div.value-fielf > input option,
+        div#header > .instruns > div.instruns__block > div.value-fielf > select option {
           text-align: center; }
-          div#header > div.h-block > div.value-fielf > input option::selection,
-          div#header > div.h-block > div.value-fielf > select option::selection {
+          div#header > .instruns > div.instruns__block > div.value-fielf > input option::selection,
+          div#header > .instruns > div.instruns__block > div.value-fielf > select option::selection {
             background-color: #fff;
             color: #222; }
-      div#header > div.h-block > div.value-fielf label {
+      div#header > .instruns > div.instruns__block > div.value-fielf label {
         cursor: pointer; }
-        div#header > div.h-block > div.value-fielf label > input {
+        div#header > .instruns > div.instruns__block > div.value-fielf label > input {
           display: none;
           user-select: text; }
-        div#header > div.h-block > div.value-fielf label > div, div#header > div.h-block > div.value-fielf label > div > div {
+        div#header > .instruns > div.instruns__block > div.value-fielf label > div, div#header > .instruns > div.instruns__block > div.value-fielf label > div > div {
           display: inline-block; }
-        div#header > div.h-block > div.value-fielf label > div.chb-cell {
+        div#header > .instruns > div.instruns__block > div.value-fielf label > div.chb-cell {
           font-size: 1px;
           width: 15px;
           height: 15px;
@@ -91,22 +92,22 @@ div#header {
           background-color: #222;
           border: 2px solid #bbb;
           vertical-align: middle; }
-          div#header > div.h-block > div.value-fielf label > div.chb-cell > div.chb-cell-inner {
+          div#header > .instruns > div.instruns__block > div.value-fielf label > div.chb-cell > div.chb-cell-inner {
             margin-top: -12px;
             font-size: 27px;
             color: transparent;
             font-weight: bold; }
-            div#header > div.h-block > div.value-fielf label > div.chb-cell > div.chb-cell-inner:before {
+            div#header > .instruns > div.instruns__block > div.value-fielf label > div.chb-cell > div.chb-cell-inner:before {
               content: "\2713"; }
-        div#header > div.h-block > div.value-fielf label > input:checked + div.chb-cell > div.chb-cell-inner {
+        div#header > .instruns > div.instruns__block > div.value-fielf label > input:checked + div.chb-cell > div.chb-cell-inner {
           color: #99f;
           color: #0a8; }
-        div#header > div.h-block > div.value-fielf label > div.caption {
+        div#header > .instruns > div.instruns__block > div.value-fielf label > div.caption {
           margin-right: 10px; }
-      div#header > div.h-block > div.value-fielf div.relatve-base {
+      div#header > .instruns > div.instruns__block > div.value-fielf div.relatve-base {
         position: relative;
         height: 0; }
-        div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame {
+        div#header > .instruns > div.instruns__block > div.value-fielf div.relatve-base > div.drop-down-list-frame {
           display: none;
           position: absolute;
           right: 0;
@@ -114,26 +115,26 @@ div#header {
           border: 1px solid #0a8;
           background-color: #222;
           text-align: left; }
-          div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item {
+          div#header > .instruns > div.instruns__block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item {
             cursor: pointer;
             padding: 0 10px;
             padding-left: 20px; }
-            div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item.typical {
+            div#header > .instruns > div.instruns__block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item.typical {
               padding-left: 10px;
               font-size: 1.2em;
               font-style: italic; }
-            div#header > div.h-block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item:hover {
+            div#header > .instruns > div.instruns__block > div.value-fielf div.relatve-base > div.drop-down-list-frame > div.set-font-list-item:hover {
               background-color: #555; }
-      div#header > div.h-block > div.value-fielf:hover div.relatve-base > div.drop-down-list-frame {
+      div#header > .instruns > div.instruns__block > div.value-fielf:hover div.relatve-base > div.drop-down-list-frame {
         display: block; }
-  div#header #favorites {
+  div#header > .instruns #favorites {
     height: 30px;
     width: 30px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     cursor: pointer; }
-    div#header #favorites:hover {
+    div#header > .instruns #favorites:hover {
       color: #0a8;
       text-shadow: 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00, 0 0 10px #f00; }
 
