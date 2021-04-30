@@ -115,34 +115,11 @@ document.body.onchange = function h_BodyChange(e) {
 		updateFontCss()
 	} else
 	if (t == search_field) {
-		let v = e.target.value, num;
-
-		if (!v) 
-			return;
-		
-		if (v.charCodeAt() !== v.codePointAt()) {
-			console.log("surrogate pare");
+		const 
+			v = t.value,
 			num = v.codePointAt();
-		} else if (v.length == 1) {
-			console.log(`(v.length == 1)`);
-			num = v.charCodeAt();
-		} else if (v.startsWith("%u")) {
-			console.log(`(v.startsWith("%u"))`);
-			num = parseInt("0x"+v.slice(2));
-		} else if (v.startsWith("%")) {
-			console.log(`(v.startsWith("%")`);
-			num = decodeURIComponent(v).charCodeAt();
-		} else if (num = v * 1) {
-			console.log(`(num = v * 1)`);
-			num;
-		} else {
-			console.error("(!)-USER'S ", "'num' is not defined.\nnum : '"+num+"'");
-		}
 
-		let rowNum = Math.floor(num / _.rowLength);
 		symbolModalWindow.open(num);
-		articleAPI.setOnMiddle(rowNum);
-
 		t.select();
 	}
 }
