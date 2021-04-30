@@ -1,13 +1,12 @@
 div#header { 
 
 	.planes {
-		// height: 50px;
+		height: 25px;
 		display: flex;
 		align-items: flex-start;
 		>.planes__plane-number {
 			text-align: center;
 			font-family: consolas, monospace;
-			// font-weight: bold;
 			cursor: pointer;
 			// outline: 1px solid $main_c;
 			border: 1px solid $main_c;
@@ -27,6 +26,20 @@ div#header {
 	}
 
 	
+	.areas {
+		height: 25px;
+		display: flex;
+		align-items: flex-start;
+		>.areas__area {
+			text-align: center;
+			font-family: consolas, monospace;
+			cursor: pointer;
+			// outline: 1px solid $main_c;
+			border: 1px solid $main_c;
+			flex-grow: 1;
+		}
+	}
+
 
 
 
