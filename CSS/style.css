@@ -58,6 +58,8 @@ div#header .planes {
       font-weight: bold; }
       div#header .planes > .planes__plane-number.marked:before {
         content: "plane "; }
+      div#header .planes > .planes__plane-number.marked + .marked:before {
+        content: " and "; }
 
 div#header > .instruns {
   height: 50px;

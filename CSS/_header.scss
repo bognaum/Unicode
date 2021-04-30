@@ -18,6 +18,9 @@ div#header {
 				&:before {
 					content: "plane ";
 				}
+				&+.marked:before {
+					content: " and ";
+				}
 			}
 		}
 	}
