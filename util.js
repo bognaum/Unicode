@@ -94,7 +94,7 @@ function getUTF16Code(num) {
 
 function getUTF32Code(num) {
 	var t = 
-		num < 0x110000  ? "xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx" :
+		num < 0x110000  ? "00000000 000xxxxx xxxxxxxx xxxxxxxx" :
 			null;
 
 	if (!t)
