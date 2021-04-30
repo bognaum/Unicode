@@ -1,3 +1,5 @@
+import _ from "./settings.js";
+
 export {
 	eHTML,
 	getParentLine,
@@ -8,7 +10,82 @@ export {
 	getUTF16Code,
 	getUTF32Code,
 	codingByTempl,
+	inTab,
 };
+
+
+const inTab_template = {
+	the  : function() {return 0;},
+	first: function() {return 0;},
+	last : function() {return 1;},
+	proto: {
+		point: function(range) {
+			const i = this();
+			return range[i];
+		},
+		row: function(range) {
+			const i = this();
+			return Math.floor(range[i] / _.rowLength);
+		},
+		block: function(range) {
+			const i = this();
+			return Math.floor(range[i] / _.blockLength);
+		},
+		plane: function(range) {
+			const i = this();
+			return Math.floor(range[i] / _.planeLength);
+		},
+		proto: {
+			ofPoint: function(num) {
+				return this([
+					num,
+					num
+				]);
+			},
+			ofRow: function(num) {
+				return this([
+					num * _.rowLength, 
+					(num + 1) * _.rowLength - 1
+				]);
+			},
+			ofBlock: function(num) {
+				return this([
+					num * _.blockLength, 
+					(num + 1) * _.blockLength - 1
+				]);
+			},
+			ofPlane: function(num) {
+				return this([
+					num * _.planeLength, 
+					(num + 1) * _.planeLength - 1
+				]);
+			}
+		}
+	}
+}
+
+const inTab = assemblyLongAPI(inTab_template);
+
+window.inTab = inTab;
+
+function assemblyLongAPI(templ, api={}) {
+	recur(api, templ);
+	return api;
+	function recur(func, t) {
+		for (let i in t) {
+			if (i == "proto") {
+				continue;
+			} else {
+				let method  = t[i];
+				func[i] = method.bind(func);
+				if (t["proto"]) {
+					recur(func[i], t["proto"]);
+				}
+			}
+		}
+		
+	}
+}
 
 function eHTML(code, shell=null) {
 	const _shell = 

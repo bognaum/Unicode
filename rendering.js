@@ -3,6 +3,7 @@ import _                 from "./settings.js";
 import {
 	eHTML,
 	generateUTF16Char,
+	inTab,
 } from "./util.js";
 
 export {
@@ -49,9 +50,8 @@ function afterArticleRender(){
 		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
 	);
 	const 
-		formula = (rowNum) => Math.floor((rowNum + 1) * _.rowLength / _.planeLength),
-		first   = formula(articleAPI.getFirstSemiVisibleLineNum()),
-		last    = formula(articleAPI.getLastSemiVisibleLineNum() );
+		first   = inTab.the.plane.ofRow(articleAPI.getFirstSemiVisibleLineNum()),
+		last    = inTab.the.plane.ofRow(articleAPI.getLastSemiVisibleLineNum() );
 	setPlanes(first, last);
 }
 

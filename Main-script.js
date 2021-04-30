@@ -5,6 +5,7 @@ import {
 	getParentLine,
 	selectElement,
 	clearSelection,
+	inTab,
 } from "./util.js";
 import {
 	articleAPI,
@@ -69,7 +70,7 @@ document.body.onclick = function h_BodyClick(e) {
 		if (t.classList.contains("planes__plane-number")) {
 			const 
 				planeNum = parseInt(t.dataset.plane),
-				rowNum   = planeNum * _.planeLength / _.rowLength;
+				rowNum   = inTab.first.row.ofPlane(planeNum);
 			articleAPI.setOnTop(rowNum);
 		} else 
 			continue;
