@@ -26,7 +26,7 @@ document.body.onclick = function h_BodyClick(e) {
 	let t = e.target;
 	do {
 		if (t.classList.contains("block-num-line")) {
-			articleAPI.setOnTop(t.dataset.blockNum * _.blockLength / _.rowLength);
+			articleAPI.setOnTop(inTab.the.row.ofBlock(t.dataset.blockNum));
 		} else 
 		if (t.classList.contains("smw__close-btn")) {
 			symbolModalWindow.close();
@@ -48,18 +48,18 @@ document.body.onclick = function h_BodyClick(e) {
 		if (t.classList.contains("smw__previous-symbol-btn")) {
 			var 
 				mWin   = document.querySelector(".symbol-modal-window"),
-				num    = mWin.dataset.number * 1,
+				num    = parseInt(mWin.dataset.number),
 				prev   = (0 < num)? num - 1 : num,
-				rowNum = prev     ? Math.floor(prev / _.rowLength) : 0;
+				rowNum = inTab.the.row.ofPoint(prev);
 			symbolModalWindow.open(prev);
 			articleAPI.setOnMiddle(rowNum);
 		} else
 		if (t.classList.contains("smw__next-symbol-btn")) {
 			var 
 				mWin   = document.querySelector(".symbol-modal-window"),
-				num    = mWin.dataset.number * 1,
+				num    = parseInt(mWin.dataset.number),
 				next   = num + 1,
-				rowNum = Math.floor(next / _.rowLength);
+				rowNum = inTab.the.row.ofPoint(next);
 			symbolModalWindow.open(next);
 			articleAPI.setOnMiddle(rowNum);
 		} else 

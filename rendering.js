@@ -47,7 +47,7 @@ afterArticleScroll();
 
 function afterArticleRender(){
 	sidebarAPI.setOnMiddle(
-		Math.floor(articleAPI.getMiddleFullyVisibleLineNum() * _.rowLength / _.blockLength)
+		Math.floor(inTab.the.block.ofRow(articleAPI.getMiddleFullyVisibleLineNum()))
 	);
 	const 
 		first   = inTab.the.plane.ofRow(articleAPI.getFirstSemiVisibleLineNum()),
@@ -57,8 +57,8 @@ function afterArticleRender(){
 
 function afterArticleScroll() {
 	const 
-		firstBlockNum = Math.floor(articleAPI.getFirstFullyVisibleLineNum() * _.rowLength / _.blockLength),
-		lastBlockNum = Math.floor(articleAPI.getLastFullyVisibleLineNum() * _.rowLength / _.blockLength),
+		firstBlockNum = inTab.the.block.ofRow(articleAPI.getFirstFullyVisibleLineNum()),
+		lastBlockNum  = inTab.the.block.ofRow(articleAPI.getLastFullyVisibleLineNum() ),
 		lines = _.sidebar.children[0].children,
 		len   = lines.length;
 
