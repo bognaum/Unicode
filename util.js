@@ -37,24 +37,28 @@ const inTab_template = {
 		},
 		proto: {
 			ofPoint: function(num) {
+				num = parseInt(num);
 				return this([
 					num,
 					num
 				]);
 			},
 			ofRow: function(num) {
+				num = parseInt(num);
 				return this([
 					num * _.rowLength, 
 					(num + 1) * _.rowLength - 1
 				]);
 			},
 			ofBlock: function(num) {
+				num = parseInt(num);
 				return this([
 					num * _.blockLength, 
 					(num + 1) * _.blockLength - 1
 				]);
 			},
 			ofPlane: function(num) {
+				num = parseInt(num);
 				return this([
 					num * _.planeLength, 
 					(num + 1) * _.planeLength - 1
