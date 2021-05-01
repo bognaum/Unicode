@@ -73,6 +73,10 @@ document.body.onclick = function h_BodyClick(e) {
 				rowNum   = inTab.first.row.ofPlane(planeNum);
 			articleAPI.setOnTop(rowNum);
 		} else 
+		if (t.classList.contains("areas__area")) {
+			const rowNum = inTab.the.row.ofPoint(parseInt(t.dataset.pointNum));
+			articleAPI.setOnTop(rowNum);
+		} else 
 			continue;
 		break;
 

@@ -65,13 +65,22 @@ div#header .planes {
 div#header .areas {
   height: 25px;
   display: flex;
-  align-items: flex-start; }
+  align-items: baseline;
+  border: 1px solid #0a8; }
   div#header .areas > .areas__area {
     text-align: center;
     font-family: consolas, monospace;
     cursor: pointer;
-    border: 1px solid #0a8;
     flex-grow: 1; }
+  div#header .areas > .areas__delim {
+    border: 1px solid #0a8;
+    align-self: stretch; }
+    div#header .areas > .areas__delim.dashed {
+      border-style: dashed; }
+    div#header .areas > .areas__delim.dotted {
+      border-style: dotted; }
+    div#header .areas > .areas__delim.half {
+      margin: 8px 0; }
 
 div#header > .instruns {
   height: 50px;
