@@ -60,11 +60,11 @@ function open(num) {
 					<td class="selectable">${getUTF8Code(num)}</td>
 				</tr>
 				<tr>
-					<td>UTF-16BE</td>
+					<td>UTF-16 BE</td>
 					<td class="selectable">${getUTF16Code(num)}</td>
 				</tr>
 				<tr>
-					<td>UTF-32BE</td>
+					<td>UTF-32 BE</td>
 					<td class="selectable">${getUTF32Code(num)}</td>
 				</tr>
 				<tr>
