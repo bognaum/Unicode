@@ -68,10 +68,6 @@ function open(num) {
 					<td class="selectable">${getUTF32Code(num)}</td>
 				</tr>
 				<tr>
-					<td>Unicode plane</td>
-					<td class="selectable">${Math.ceil((num + 1) / 0x10000)}</td>
-				</tr>
-				<tr>
 					<td>Line neight - subject (normal)</td>
 					<td>
 						<span class="selectable subj-lh-em"></span><span class="main-color">em</span>
