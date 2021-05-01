@@ -160,17 +160,19 @@ function getUTF8Code(num) {
 }
 
 function getUTF16Code(num) {
-	var t = 
-		num < 0x10000  ? "xxxxxxxx xxxxxxxx" :
-		num < 0x110000 ? "110110xx xxxxxxxx 110111xx xxxxxxxx" :
-			null;
-
-	if (!t)
+	if (num < 0x10000) 
+		return codingByTempl("xxxxxxxx xxxxxxxx", num);
+	
+	else if (num < 0x110000) 
+		return codingByTempl(
+			"110110xx xxxxxxxx 110111xx xxxxxxxx", num - 0x10000);
+	
+	else {
 		console.error("(!)-USER'S ", "getUTF16Code("+num+")", 
 			"Maximum number exceeded.", "Max number =", 0x110000 - 1, 
 			"Received argument =", num);
-
-	return codingByTempl(t, num);
+		return null;
+	}
 }
 
 function getUTF32Code(num) {
