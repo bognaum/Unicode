@@ -13,11 +13,10 @@ body {
 	color: $main_c;
 }
 
-.selectable {
-	&::selection {
-		background-color: #fff;
-		color: $bg_c;
-	}
+.selectable::selection,
+.selectable *::selection {
+	background-color: $def_c;
+	color: $bg_c;
 }
 
 $header_h : 100px;

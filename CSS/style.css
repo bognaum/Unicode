@@ -6,8 +6,9 @@ body {
 .main-color {
   color: #0a8; }
 
-.selectable::selection {
-  background-color: #fff;
+.selectable::selection,
+.selectable *::selection {
+  background-color: #bbb;
   color: #222; }
 
 #container {
@@ -362,10 +363,11 @@ div.block-num-line {
             text-align: center;
             color: #0a8;
             cursor: pointer;
-            user-select: text; }
-            .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site > .swm-symbol-border > .smw__symbol::selection {
-              background-color: #fff;
-              color: #222; }
+            user-select: text;
+            /* &::selection {
+								background-color: #fff;
+								color: $bg_c;
+							} */ }
         .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__symbol-site > .smw__symbol-controls-expander {
           min-width: 1em;
           font-size: 200px; }
@@ -382,10 +384,11 @@ div.block-num-line {
               text-align: left;
               cursor: pointer;
               font-family: consolas;
-              user-select: text; }
-              .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2)::selection {
-                background-color: #fff;
-                color: #222; }
+              user-select: text;
+              /* &::selection {
+											background-color: #fff;
+											color: $bg_c;
+										} */ }
               .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte {
                 padding: 3px; }
                 .smw .smw__glass-cower > .smw__frame > .smw__body > .smw__features-site table > tbody > tr > td:nth-child(2) > .byte > .data-bit {
