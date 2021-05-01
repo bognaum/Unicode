@@ -77,18 +77,23 @@ document.body.onclick = function h_BodyClick(e) {
 			const rowNum = inTab.the.row.ofPoint(parseInt(t.dataset.pointNum));
 			articleAPI.setOnTop(rowNum);
 		} else 
+		if (t.classList.contains("selectable")) {
+			selectElement(t);
+			document.execCommand("copy");
+			setTimeout(clearSelection, 500);
+		} else 
 			continue;
 		break;
 
 	} while (t = t.parentElement);
 
 
-	if (e.target.classList.contains("selectable")) {
+	/*if (e.target.classList.contains("selectable")) {
 
 		selectElement(e.target);
 		document.execCommand("copy");
 		setTimeout(clearSelection, 500);
-	}
+	}*/
 
 	if (e.target.classList.contains("smw__glass-cower")) {
 		symbolModalWindow.close();
